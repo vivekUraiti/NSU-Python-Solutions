@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NSU Python Course
 
 Course materials for "Programming in Python" at Novosibirsk State University (NSU). This repository contains lectures, labs, examples, and supporting resources for first-year Master's students in Artificial Intelligence and Big Data Analytics.
@@ -101,3 +102,6 @@ git add .
 git commit -m "Submit Lab 01"
 git push origin main
 ```
+=======
+# NSU-Python-Solutions
+>>>>>>> 0c7b38eccf89d85b9886e35f4f742b271bf309fa
