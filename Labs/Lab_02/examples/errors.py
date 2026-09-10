@@ -15,22 +15,22 @@ print("Error examples are currently commented out.")
 # SyntaxError
 # ============================================================
 
-# print("Hello"
+print("Hello")
 
 
 # ============================================================
 # NameError
 # ============================================================
-
-# print(student_name)
+student_name = "Vivek"
+print(student_name)
 
 
 # ============================================================
 # TypeError
 # ============================================================
 
-# age = "22"
-# print(age + 1)
+age = 22
+print(age + 1)
 
 
 # ============================================================
@@ -59,5 +59,5 @@ print("Error examples are currently commented out.")
 # KeyError
 # ============================================================
 
-# student = {"name": "Anna"}
-# print(student["age"])
+student = {"name": "Anna"}
+print(student["age"])

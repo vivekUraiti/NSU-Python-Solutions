@@ -51,9 +51,11 @@ mean = 0.0
 
 # TODO:
 # Print the results using f-strings.
-
-
-print()
+print(f"Number of values: {len(values)}")
+print(f"Smallest value: {min(values)}")
+print(f"Largest value: {max(values)}")
+print(f"Total: {sum(values)}")
+print(f"Mean: {sum(values) / len(values):.2f}")
 
 
 # ============================================================
@@ -71,6 +73,8 @@ measurement = 19.87654
 # Expected numerical value:
 # 7.438
 
+print(f"Absolute value of temperature_change: {abs(temperature_change)}")
+
 # TODO:
 # Round measurement to:
 #
@@ -80,8 +84,15 @@ measurement = 19.87654
 #
 # Use round().
 
+rounded_1 = round(measurement, 1)
+rounded_2 = round(measurement, 2)
+rounded_3 = round(measurement, 3)
 
-print()
+print(f"Rounded to 1 decimal place: {rounded_1}")
+print(f"Rounded to 2 decimal places: {rounded_2}")
+print(f"Rounded to 3 decimal places: {rounded_3}")
+
+
 
 
 # ============================================================
@@ -101,15 +112,15 @@ balance = 1000.0
 # TODO:
 # Replace the normal assignments below with +=, -=, and *=.
 
-balance = balance + 250
-balance = balance - 120
-balance = balance * 1.05
+balance += 250
+balance -= 120
+balance *= 1.05
 
 # TODO:
 # Print the final balance with two decimal places.
 
 
-print()
+print(f"Final balance: ${balance:.2f}")
 
 
 # ============================================================
@@ -131,9 +142,17 @@ expression_5 = 2 ** 3 ** 2
 #
 # Example:
 # 2 + 3 * 4 = 14
+# (2 + 3) * 4 = 20
+# (20 / 5) + 3 = 7.0
+# (20 / (5 + 3)) = 2.5
+# 2 ** 3 ** 2 = 512
 
 
-print()
+print(f"2 + 3 * 4 = {expression_1}")
+print(f"(2 + 3) * 4 = {expression_2}")
+print(f"(20 / 5) + 3 = {expression_3}")
+print(f"(20 / (5 + 3)) = {expression_4}")
+print(f"2 ** 3 ** 2 = {expression_5}")
 
 
 # ============================================================
@@ -145,10 +164,11 @@ print("Task 5 — Time Conversion")
 # TODO:
 # Ask the user to enter a number of seconds.
 
-total_seconds = 0
+total_seconds = input("Enter a number of seconds: ")
 
 # TODO:
 # Convert the input to int.
+integer_seconds = int(total_seconds)
 
 # TODO:
 # Calculate:
@@ -160,17 +180,16 @@ total_seconds = 0
 # 135 seconds -> 2 minutes and 15 seconds
 #
 # Hint:
-# // and %
 
-minutes = 0
-remaining_seconds = 0
+minutes = integer_seconds // 60
+remaining_seconds = integer_seconds % 60
 
 # TODO:
 # Print:
 # 135 seconds = 2 minute(s) and 15 second(s)
 
 
-print()
+print(f"{integer_seconds} seconds = {minutes} minute(s) and {remaining_seconds} second(s)")
 
 
 # ============================================================
@@ -187,25 +206,27 @@ value = 17.95
 # Question:
 # Does int() round the value?
 
-integer_value = 0
+integer_value = int(value)
+print(f"Integer value: {integer_value}")
 
 # TODO:
 # Convert integer_value back to float and print it.
 
-float_value = 0.0
+float_value = float(integer_value)
+print(f"Float value: {float_value}")
 
 # TODO:
 # Convert integer_value to str and print:
 #
 # Value as text: <value>
+print(f"Value as text: {str(integer_value)}")
 # Type: <type>
-#
+print(f"Type: {type(str(integer_value))}")
 # Use type() for the second line.
 
-text_value = ""
 
 
-print()
+
 
 
 # ============================================================
