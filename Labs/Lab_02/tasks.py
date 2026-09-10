@@ -113,6 +113,7 @@ balance = 1000.0
 # Replace the normal assignments below with +=, -=, and *=.
 
 balance += 250
+balance = balance + 250
 balance -= 120
 balance *= 1.05
 
@@ -241,22 +242,27 @@ last_name = input("Last name: ")
 # TODO:
 # Create full_name using string concatenation.
 
-full_name = ""
+full_name = first_name + last_name
 
 # TODO:
 # Print:
 #
 # Full name: <full_name>
+print(f"Full name: {full_name}")
 # Number of characters: <length>
+print(f"Number of characters: {len(full_name)}")
 # First character: <first character>
+print(f"First character: {full_name[0]}")
 # Last character: <last character>
+print(f"Last character: {full_name[-1]}")
 # First three characters: <slice>
+print(f"First three characters: {full_name[:3]}")
 
 # TODO:
 # Print full_name three times using string repetition.
 
 
-print()
+print(f"{full_name} " * 3)
 
 
 # ============================================================
@@ -272,7 +278,7 @@ university = "NSU"
 # TODO:
 # Print the three values on one line separated by:
 #
-#  |
+print(language, course, university, sep=" | ")
 #
 # Expected:
 # Python | AI and Big Data Analytics | NSU
@@ -288,7 +294,8 @@ university = "NSU"
 # Do not write "Python Programming" as one string.
 
 
-print()
+print("Python", end=" ")
+print("Programming")
 
 
 # ============================================================
@@ -310,7 +317,7 @@ student_university = "NSU"
 # skills
 # university
 
-student = {}
+student = {"name": student_name, "age": student_age, "Skills": student_skills, "university": student_university}
 
 # TODO:
 # Print:
@@ -323,7 +330,10 @@ student = {}
 # Use dictionary access, indexing, and len().
 
 
-print()
+print(student["name"])
+print(student["university"])
+print(student["Skills"][0])
+print(len(student["Skills"]))
 
 
 # ============================================================
@@ -339,11 +349,11 @@ same_numbers = numbers
 
 # TODO:
 # Change the first item in numbers to 99.
-#
+numbers[0] = 99
 # Then print both:
+print(numbers)
 #
-# numbers
-# same_numbers
+print(same_numbers)
 #
 # Observe what happened.
 
@@ -364,7 +374,7 @@ same_text = text
 # Compare this result with the list example.
 
 
-print()
+print(text.replace("Python", "Python Course"))
 
 
 # ============================================================
@@ -386,24 +396,24 @@ scores = [78, 92, 85, 69, 88]
 #
 # Use built-in functions.
 
-score_count = 0
-minimum_score = 0
-maximum_score = 0
-total_score = 0
-mean_score = 0.0
+score_count = len(scores)
+minimum_score = min(scores)
+maximum_score = max(scores)
+total_score = sum(scores)
+mean_score = total_score / score_count
 
 # TODO:
 # Print a clean report:
 #
-# Number of scores: 5
-# Minimum: 69
-# Maximum: 92
-# Mean: 82.40
+print(f"Number of scores: {score_count}")
+print(f"Minimum: {minimum_score}")
+print(f"Maximum: {maximum_score}")
+print(f"Mean: {mean_score}")
 #
 # Format the mean to exactly two decimal places.
 
 
-print()
+print(f"Mean: {mean_score:.2f}")
 
 
 # ============================================================
@@ -425,15 +435,15 @@ print("Task 12 — PEP 8 Cleanup")
 #
 # Keep the same calculation.
 
-P=1250
-Q=3
-D=10
-X=P*Q-D/100*P*Q
+Price=1250
+Quantity=3
+Discount=0.1
 
-print("Final:",X)
+Total_discount = Price * Quantity - Discount / 100 * Price * Quantity
+
+print(f"Total discount: ${Total_discount:.2f}")
 
 
-print()
 
 
 # ============================================================
@@ -447,18 +457,27 @@ print("Optional Challenge — Student Score Summary")
 # Ask the user for:
 #
 # student name
+student_name = input("Enter the student's name: ")
 # three test scores
+test_scores = int(input("Enter three test scores separated by spaces: "))
 #
 # Store the three scores in a list.
-#
+test_scores = list(float(test_scores))
 # Calculate:
 #
 # minimum score
+minimum_score = min(test_scores)
 # maximum score
+maximum_score = max(test_scores)
 # mean score
+mean_score = sum(test_scores) / len(test_scores)
 #
 # Print a clean summary similar to:
-#
+print(f"Student: {student_name}")
+print(f"Scores: {test_scores}")
+print(f"Minimum: {minimum_score:.2f}")
+print(f"Maximum: {maximum_score:.2f}")
+print(f"Mean: {mean_score:.2f}")
 # Student: Anna
 # Scores: [78.0, 85.0, 91.0]
 # Minimum: 78.00
@@ -489,12 +508,13 @@ print("Task 13 — Multiple Assignment")
 # y = 20
 # z = 30
 
-x = 0
-y = 0
-z = 0
+x = 10
+y = 20
+z = 30
 
 # TODO:
 # Print x, y, and z.
+print(10, 20, 30)
 
 
 # TODO:
@@ -508,7 +528,7 @@ b = 10
 # b = 5
 
 
-print()
+print(b = a, a = b)
 
 
 
@@ -522,17 +542,23 @@ text = "  Python Programming Course  "
 
 # TODO:
 # Print the text:
-#
 # 1. without surrounding spaces
+print(text.strip())
+
 # 2. in lowercase
+print(text.lower())
 # 3. in uppercase
+print(text.upper())
 # 4. with "Course" replaced by "Lab"
+print(text.replace("Course", "lab"))
 
 # TODO:
 # Check and print whether the cleaned text:
 #
 # starts with "Python"
+print(text.strip().startswith("Python"))
 # ends with "Course"
+print(text.strip().endswith("Course"))
 #
 # Use:
 # strip()
