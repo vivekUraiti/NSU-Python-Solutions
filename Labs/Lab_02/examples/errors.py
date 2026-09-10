@@ -8,14 +8,18 @@ Then comment the example again before trying another one.
 """
 
 
-print("Error examples are currently commented out.")
+# print("Error examples are currently commented out.")
 
 
 # ============================================================
 # SyntaxError
 # ============================================================
 
+<<<<<<< HEAD
 print("Hello")
+=======
+# print("Hello")
+>>>>>>> d00f420781dbc149850faf4588de54ea5da51a81
 
 
 # ============================================================
@@ -51,8 +55,8 @@ print(age + 1)
 # IndexError
 # ============================================================
 
-# numbers = [10, 20]
-# print(numbers[5])
+#numbers = [10, 20]
+#print(numbers[0])
 
 
 # ============================================================
