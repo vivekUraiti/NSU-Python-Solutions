@@ -24,7 +24,14 @@ Use only concepts covered in Lecture 03.
 
 # Write your code below:
 
-number = int(input("Enter an integer: "))
+# number = int(input("Enter an integer: "))
+
+# if number > 0: 
+#     print("Positive")
+# elif number < 0:
+#     print("Negative")
+# else:
+#     print("Zero")
 
 
 
@@ -42,6 +49,17 @@ number = int(input("Enter an integer: "))
 # Test boundary values: 12, 13, 17, 18, 64, 65.
 
 # Write your code below:
+
+# age = int(input("Enter your age: "))
+
+# if age < 13:
+#     print("Child")
+# elif 13 <= age and age <= 17:
+#     print("Teenager")
+# elif 18 <= age and age <= 64:
+#     print("Adult")
+# else:
+#     print("Senior")
 
 
 # ============================================================
@@ -62,6 +80,20 @@ number = int(input("Enter an integer: "))
 
 # Write your code below:
 
+# score = int(input("Enter your score: "))
+
+# if score > 0 and score <= 100:
+#     if score >= 90:
+#         print("A")
+#     elif score >= 75:
+#         print("B")
+#     elif score >= 60:
+#         print("C")
+#     else:
+#         print("Fail")
+# else:
+#     print("Invalid score")
+
 
 # ============================================================
 # Task 4 — Access decision
@@ -80,6 +112,18 @@ number = int(input("Enter an integer: "))
 
 # Write your code below:
 
+# age = int(input("Enter your age: "))
+
+# if age >= 18:
+#     ticket = input("Do you have a ticket? (yes/no): ")
+#     if ticket.lower() == "yes":
+#         print("Access granted")
+#     else:
+#         print("Ticket required")
+# else:
+#     print("Must be 18 or older")
+
+
 
 # ============================================================
 # Task 5 — Even numbers with range()
@@ -90,6 +134,10 @@ number = int(input("Enter an integer: "))
 # Use range(start, stop, step).
 
 # Write your code below:
+
+# for num in range(2, 30, 2):
+#     print(num)
+
 
 
 # ============================================================
@@ -105,6 +153,11 @@ number = int(input("Enter an integer: "))
 # 1683
 
 # Write your code below:
+# total = 0
+# for num in range(3, 100, 3):
+#     total += num
+# print(total)
+    
 
 
 # ============================================================
@@ -121,6 +174,24 @@ numbers = [4, -2, 0, 7, -5, 9, 0, -1, 8]
 # Do not manually count the values.
 
 # Write your code below:
+
+# positive_count = 0
+# negative_count = 0
+# zero_count = 0
+
+# for num in numbers:
+#     if num > 0:
+#         positive_count += 1
+#     elif num < 0:
+#         negative_count += 1
+#     else:
+#         zero_count += 1
+
+# print(f"Positive count: {positive_count}")
+# print(f"Negative count: {negative_count}")
+# print(f"Zero count: {zero_count}")
+
+
 
 
 # ============================================================
@@ -140,6 +211,19 @@ numbers = [4, -2, 0, 7, -5, 9, 0, -1, 8]
 # Iterate directly over the string.
 
 # Write your code below:
+
+text = input("Enter a word or text: ")
+
+vowels_count = 0
+vowels = ["a", "e", "i", "o", "u"]
+for word in text:
+    if word.lower() in vowels:
+        vowels_count += 1
+        continue
+
+print(f"Vowels count: {vowels_count}")
+
+
 
 
 # ============================================================
@@ -162,6 +246,24 @@ scores = [85, 42, 67, 91, 58, 73, 100, 39]
 # Average: 69.38
 
 # Write your code below:
+
+passed_students_count = 0
+failed_students_count = 0
+total_score = 0
+
+for score in scores:
+    if score >= 60:
+        passed_students_count += 1
+    else:
+        failed_students_count += 1
+    total_score += score
+
+Average = total_score / len(scores)
+
+print(f"Passed: {passed_students_count}")
+print(f"Failed: {failed_students_count}")
+print(f"Average: {Average:.2f}")
+
 
 
 # ============================================================
@@ -187,6 +289,17 @@ names = ["Anna", "Boris", "Sasha", "Maria", "Oleg", "Dina"]
 
 # Write your code below:
 
+found = False
+
+your_name = input("Enter a name for search: ")
+for name in names:
+    if name == your_name:
+        found = True
+        print("Found")
+
+if not found:
+    print("Not found")
+
 
 # ============================================================
 # Task 11 — Skip invalid scores
@@ -208,6 +321,24 @@ raw_scores = [78, -5, 91, 120, 66, 0, 88, 101, 54]
 # Use continue.
 
 # Write your code below:
+
+valid_scores = []
+total_sum = 0
+
+for score in raw_scores:
+    if score > 0 or score <= 100:
+        continue
+    print(f"Processing valid score: {score}")
+    valid_scores += score
+    total_sum += score
+
+if len(valid_scores) > 0:
+    Average = total_sum / len(valid_scores)
+else:
+    Average = 0
+
+print(f"Valid scores: {valid_scores}")
+print(f"Average: {Average:.2f}")
 
 
 # ============================================================
@@ -233,6 +364,18 @@ student_scores = {
 
 # Write your code below:
 
+# num_student_passed = 0
+
+# for name, score in student_scores.items():
+#     if score >= 60:
+#         print(f"{name}: Pass")
+#         num_student_passed += 1
+#     else:
+#         print(f"{name}: Fail")
+
+# print(f"Number of student passed: {num_student_passed}")
+
+
 
 # ============================================================
 # BONUS Task 13 — FizzBuzz
@@ -248,6 +391,18 @@ student_scores = {
 # Check the most specific condition first.
 
 # Write your code below:
+
+for num in range(1, 31):
+
+    if num % 15 == 0:
+        print('FizzBuzz')
+    elif num % 3 == 0:
+        print('Fizz')
+    elif num % 5 == 0:
+        print("Buzz")
+    else:
+        print(num)
+
 
 
 # ============================================================
@@ -271,3 +426,18 @@ correct_pin = "4821"
 # Do NOT use a while loop.
 
 # Write your code below:
+
+pin = input("Enter your pin:")
+
+appended_pin = []
+for pin_1 in correct_pin:
+    appended_pin.append(appended_pin)
+    if pin == appended_pin:
+        print("Access granted")
+        break
+    else:
+        print("Access denied")
+        break
+
+
+
