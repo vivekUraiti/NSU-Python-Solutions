@@ -648,10 +648,7 @@ print("age" in student)
 # "email" in student
 print("email" in student)
 
-<<<<<<< HEAD
-=======
 
-print()
 
 # ============================================================
 # Task 17 — Time Decomposition
@@ -685,7 +682,7 @@ total_seconds = 0
 # Read total_seconds from the user.
 
 hours = 0
-remaining_seconds = 0
+remaining_seconds = 0       
 minutes = 0
 seconds = 0
 
@@ -962,4 +959,3 @@ print("Task 22 — Debug the Program")
 print()
 
 
->>>>>>> d00f420781dbc149850faf4588de54ea5da51a81

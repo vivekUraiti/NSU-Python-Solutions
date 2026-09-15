@@ -24,6 +24,9 @@ Use only concepts covered in Lecture 03.
 
 # Write your code below:
 
+number = int(input("Enter an integer: "))
+
+
 
 # ============================================================
 # Task 2 — Age category
