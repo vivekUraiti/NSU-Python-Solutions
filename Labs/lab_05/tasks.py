@@ -500,6 +500,23 @@ print(digit_sum(7))
 
 # Write your code below:
 
+def result_summary(name, *scores, passing=60):
+    if not scores:
+        return None
+
+    count = 0
+
+    for score in scores:
+        if score >= passing:
+            count += 1
+
+    average = sum(scores) / len(scores)
+
+    return f"{name}: average={average}, passed={count}/{len(scores)}"
+
+
+result_summary("Anna", 80, 70, 50, 120, passing=60)
+
 
 # ============================================================
 # Task 15 — Function with validation
@@ -527,6 +544,16 @@ print(digit_sum(7))
 
 # Write your code below:
 
+def calculate_discount(price, discount=10):
+    if price < 0 or discount >=100:
+        return None
+    return price - price * discount / 100
+
+print(calculate_discount(100))
+print(calculate_discount(200, 25))
+print(calculate_discount(100, 120))
+print(calculate_discount(-20, 10))
+
 
 # ============================================================
 # Task 16 — Minimum and maximum with *args
@@ -551,6 +578,24 @@ print(digit_sum(7))
 
 # Write your code below:
 
+def score_range(*scores):
+    if not scores:
+        return None
+    smallest = scores[0]
+    largest = scores[0]
+    for score in scores:
+        if score < smallest:
+            smallest = score
+
+        if score > largest:
+            largest = score
+
+    return largest - smallest
+
+print(score_range(10, 30, 20, 50))
+print(score_range(5))
+print(score_range())
+
 
 # ============================================================
 # Task 17 — Count values above a limit
@@ -569,6 +614,18 @@ print(digit_sum(7))
 # Use a loop.
 
 # Write your code below:
+
+def count_above(limit, *numbers):
+    count = 0
+    for num in numbers:
+        if num > limit:
+            count += 1
+    return count
+
+print(count_above(10, 5, 12, 30, 7, 20))
+count_above(100, 10, 20, 30)     
+count_above(5) 
+
 
 
 # ============================================================
@@ -599,6 +656,15 @@ print(digit_sum(7))
 # debug = True
 
 # Write your code below:
+
+def show_settings(**settings):
+    if not settings:
+        return f"No settings"
+    for key, value in settings.items():
+        print(f"{key} = {value}")
+        
+
+print(show_settings(language="Python", version=3.12, debug=True))
 
 
 # ============================================================
@@ -786,17 +852,7 @@ print(digit_sum(7))
 
 # Write your code below:
 
-def result_summary(name, *scores, passing=60):
-    if not scores:
-        return None
-    count = 0
-    for score in scores:
-        if score >= passing:
-           count += 1
-    return f"{name}: average={sum(scores) / len(scores)}, passed={count}/{len(scores)}"
 
-
-print(result_summary("Anna", 80, 70, 50, 120, passing=60))
     
 
 
