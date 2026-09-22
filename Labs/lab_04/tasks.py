@@ -31,6 +31,13 @@ Use only concepts covered in Lecture 04 and earlier lectures.
 
 # Write your code below:
 
+# num = int(input("Enter an integer: "))
+
+# while num >= 1:
+#     print(num)
+#     num -= 1
+
+
 
 # ============================================================
 # Task 2 — Repeat until zero
@@ -55,6 +62,21 @@ Use only concepts covered in Lecture 04 and earlier lectures.
 # Write your code below:
 
 
+# count = 0
+# sum = 0
+
+# user_input = 1
+
+# while user_input != 0:
+#     user_input = int(input("Enter an integer: "))
+#     count += 1
+#     sum += user_input
+
+
+# print(f"Count: {count}")
+# print(f"Sum: {sum}")
+
+
 # ============================================================
 # Task 3 — Valid input with while True
 # ============================================================
@@ -75,6 +97,18 @@ Use only concepts covered in Lecture 04 and earlier lectures.
 
 # Write your code below:
 
+# while True:
+#     user_input = int(input("Enter an integer from 1 to 10: "))
+
+#     if user_input < 1 or user_input > 10:
+#         print("Invalid value")
+#     else:
+#         print("Accepted")
+#         break
+
+
+
+
 
 # ============================================================
 # Task 4 — continue in a while loop
@@ -89,6 +123,16 @@ Use only concepts covered in Lecture 04 and earlier lectures.
 # an infinite loop.
 
 # Write your code below:
+
+# num = 1
+
+# while num <= 20:
+#     num += 1
+#     if num % 3 == 0:
+#         continue
+#     print(num)
+
+
 
 
 # ============================================================
@@ -113,6 +157,14 @@ numbers = [4, 8, 12, 16, 21, 24]
 
 # Write your code below:
 
+for num in numbers:
+    if num % 2 != 0:
+        print(f"Frist odd number: {num}")
+        break
+    
+print("All values are even")
+
+
 
 # ============================================================
 # Task 6 — Multiplication table with nested loops
@@ -133,6 +185,10 @@ numbers = [4, 8, 12, 16, 21, 24]
 
 # Write your code below:
 
+for i in range(1, 6):     
+    for j in range(1, 6):   
+        print(i * j, end=" ")
+    print()
 
 # ============================================================
 # Task 7 — Dynamic typing
@@ -160,6 +216,17 @@ numbers = [4, 8, 12, 16, 21, 24]
 
 # Write your code below:
 
+value = 42
+print(type(value))
+
+value = 3.14
+print(type(value))
+
+value = "Python"
+print(type(value))
+
+value = [1, 2, 3]
+print(type(value))
 
 # ============================================================
 # Task 8 — Equality, identity, and references
@@ -192,6 +259,11 @@ c = a
 
 # Write your code below:
 
+c.append(30)
+print(a)
+print(b)
+print(c)
+
 
 # ============================================================
 # Task 9 — Function: is_even
@@ -217,6 +289,13 @@ c = a
 
 # Write your code below:
 
+def is_even(number):
+    return number % 2 == 0
+print(is_even(12))
+print(is_even(13))
+print(is_even(18))
+
+
 
 # ============================================================
 # Task 10 — Function: calculate_discount
@@ -237,6 +316,12 @@ c = a
 # Print each returned result.
 
 # Write your code below:
+
+def calculate_discount(price, percent):
+    final_price = price - price * percent / 100
+    return final_price
+print(calculate_discount(1000, 15))
+print(calculate_discount(250, 20))
 
 
 # ============================================================

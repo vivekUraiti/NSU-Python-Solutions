@@ -36,6 +36,15 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def describe_student(name, age, city):
+    print(f"Name: {name}")
+    print(f"Age: {age}")
+    print(f"City: {city}")
+
+describe_student("Anna", 23, "Novosibirsk")
+describe_student(name="Anna", city="Novosibirsk", age=22)
+describe_student("Anna", age=22, city="Novosibirsk")
+
 
 # ============================================================
 # Task 2 — Default arguments
@@ -58,6 +67,13 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def shipping_cost(weight, rate=2.5):
+    return weight * rate
+
+print(shipping_cost(4))
+print(shipping_cost(4, 4.3))
+print(shipping_cost(4, rate=8.0))
+
 
 # ============================================================
 # Task 3 — Early return
@@ -74,6 +90,14 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # safe_divide(10, 0)  -> None
 
 # Write your code below:
+
+def safe_divide(a, b):
+    if b is 0:
+        return None
+    return a / b
+
+print(safe_divide(10, 2))
+print(safe_divide(10, 0))
 
 
 # ============================================================
@@ -97,6 +121,13 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def total_score(*scores):
+    return sum(scores)
+
+print(total_score(10, 20, 30))
+print(total_score(5))
+print(total_score(0))
+
 
 # ============================================================
 # Task 5 — *args: average score
@@ -113,6 +144,16 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # average_score()             -> None
 
 # Write your code below:
+
+def average_score(*scores):
+    if not scores:
+        return None
+    else:
+        return sum(scores) / len(scores)
+
+
+print(average_score(80, 90, 100))
+print(average_score())
 
 
 # ============================================================
@@ -134,6 +175,12 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # year: 1
 
 # Write your code below:
+
+def show_profile(**details):
+    for key, value in details.items():
+        print(f"{key}: {value}")
+
+print(show_profile(name="Anna", city="Novosibirsk", year=1))
 
 
 # ============================================================
@@ -163,6 +210,12 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def course_report(student, *scores, **options):
+    print(student)
+    print(f"Scores: {scores}")
+    print(f"Options: {options}")
+
+course_report("Mira", 80, 92, 75, rounded=True, scale=100)
 
 # ============================================================
 # Task 8 — Scope
@@ -189,6 +242,14 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # - tax exists only inside final_price().
 
 # Write your code below:
+
+TAX_RATE = 0.20
+
+def final_price(price):
+    tax = price * TAX_RATE
+    return price + tax
+
+print(final_price(100))
 
 
 # ============================================================
@@ -219,6 +280,15 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def countdown(n):
+    if n == 0:
+        print("Go!")
+    else:
+        print(n)
+        return countdown(n - 1)
+
+countdown(3)
+
 
 # ============================================================
 # Task 10 — Recursive factorial
@@ -240,6 +310,18 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # factorial(-2) -> None
 
 # Write your code below:
+
+def factorial(n):
+    if n < 0:
+        return None
+    elif n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))
+print(factorial(0))
+print(factorial(-2))
 
 
 # ============================================================
@@ -264,6 +346,17 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # sum_to(0) -> 0
 
 # Write your code below:
+
+def sum_to(n):
+    if n < 0:
+        return None
+    elif n == 0:
+        return 0
+    else:
+        return n + sum_to(n - 1)
+
+print(sum_to(4))
+print(sum_to(0))
 
 
 # ============================================================
@@ -307,6 +400,39 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+import math
+
+radius = int(input("Enter the radius of a circle: "))
+
+circumference = 2 * math.pi * radius
+area = math.pi * radius ** 2
+area_ceil = math.ceil(area)
+area_floor = math.floor(area)
+
+print(f"Circumference: {8.849}")
+print(f"Area: {area:.4f}")
+print(f"Area ceil: {area_ceil}")
+print(f"Area floor: {area_floor}")
+
+numbers = [10, 20, 20, 30]
+
+numbers.append(40)
+numbers.extend([50, 60])
+numbers.insert(1, 15)
+
+print(numbers.count(20))
+print(numbers.index(30))
+numbers.remove(20)
+
+removed = numbers.pop()
+print(numbers)
+print(removed)
+
+
+
+
+
+
 
 # ============================================================
 # Task 13 — BONUS: Recursive digit sum
@@ -335,6 +461,17 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
+def digit_sum(n):
+    if n < 10:
+        return n
+    return (n % 10) + digit_sum(n // 10)
+
+print(digit_sum(1234))
+print(digit_sum(7))
+    
+
+
+
 
 # ============================================================
 # Task 14 — BONUS: Student result summary
@@ -362,3 +499,19 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 # Do not use filter() or map().
 
 # Write your code below:
+
+def result_summary(name, *scores, passing=60):
+    if not scores:
+        return None
+    count = 0
+    for score in scores:
+        if score >= passing:
+           count += 1
+    return f"{name}: average={sum(scores) / len(scores)}, passed={count}/{len(scores)}"
+
+
+print(result_summary("Anna", 80, 70, 50, 120, passing=60))
+    
+
+
+
