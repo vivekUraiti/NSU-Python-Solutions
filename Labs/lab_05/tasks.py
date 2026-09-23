@@ -689,6 +689,13 @@ print(show_settings(language="Python", version=3.12, debug=True))
 
 # Write your code below:
 
+def distance(x1, y1, x2, y2):
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+    return distance
+
+print(distance(0, 0, 3, 4))
+
 
 # ============================================================
 # Task 20 — List operations: shopping list
@@ -713,6 +720,20 @@ print(show_settings(language="Python", version=3.12, debug=True))
 # ["bread", "coffee", "eggs", "rice", "tea"]
 
 # Write your code below:
+shopping = ["bread", "milk", "eggs"]
+shopping.append("Rice")
+
+shopping.insert(1, "Coffee")
+shopping.extend(["tea", "sugar"])
+
+shopping.remove("milk")
+print(shopping.index('eggs'))
+
+print(shopping.count("bread"))
+removed_item = shopping.pop()
+print(shopping)
+print(removed_item)
+
 
 
 # ============================================================
@@ -741,6 +762,17 @@ print(show_settings(language="Python", version=3.12, debug=True))
 # Do NOT use a loop.
 
 # Write your code below:
+
+def power(base, exponent):
+    if exponent == 0:
+        return 1
+    else:
+        base_exponent = base * power(base, exponent - 1)
+        return base_exponent
+
+print(power(2, 5))
+print(power(3, 3))
+print(power(10, 0))
 
 
 # ============================================================
@@ -772,6 +804,17 @@ print(show_settings(language="Python", version=3.12, debug=True))
 # Do NOT use a loop.
 
 # Write your code below:
+def counts_digits(n):
+    if n < 10:
+        return 1
+    
+
+    return 1 + counts_digits(n // 10)
+
+print(counts_digits(7))
+print(counts_digits(1234))
+print(counts_digits(10000))
+    
 
 
 # ============================================================
@@ -804,6 +847,16 @@ print(show_settings(language="Python", version=3.12, debug=True))
 # - while
 
 # Write your code below:
+
+def recursive_sum(numbers):
+    if not numbers:
+        return 0
+    
+    return numbers[0] + recursive_sum(numbers[1:])
+
+print(recursive_sum([10, 20, 30]))
+print(recursive_sum([5]))
+print(recursive_sum([]))
 
 
 # ============================================================
@@ -852,8 +905,33 @@ print(show_settings(language="Python", version=3.12, debug=True))
 
 # Write your code below:
 
+def exam_statistics(student, *scores, passing=60):
+    highest_score = 0
+    lowest_score = 0
+    passed = 0
+    fail = 0
+    if not scores:
+        return None
+    average_score = sum(scores) / len(scores)
+    for score in scores:
+        if score > highest_score:
+            highest_score = score
+        if score < highest_score:
+            lowest_score = score
+        if score >= passing:
+            passed += 1
+        else:
+            fail += 1
 
-    
+    print(f"{student}: Average={average_score}, highest={highest_score}, lowest={lowest_score}, passed={passed}, failed={fail}")
 
 
+
+statistics = exam_statistics(
+    "Anna",
+    80, 70, 50, 90,
+    passing=60
+)
+
+print(statistics)
 
