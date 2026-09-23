@@ -961,6 +961,26 @@ print(statistics)
 # Write your code below:
 
 
+def min_max(numbers):
+    smallest = numbers[0]
+    largest = numbers[0]
+
+    for num in numbers:
+        if num < smallest:
+            smallest = num
+
+        if num > largest:
+            largest = num
+
+    return smallest, largest
+
+
+smallest, largest = min_max([5, 2, 9, 1, 7])
+
+print(smallest)
+print(largest)
+
+
 # ============================================================
 # Task 26 — Temperature converter
 # ============================================================
@@ -990,6 +1010,21 @@ print(statistics)
 
 # Write your code below:
 
+def convert_temperature(value, unit="C"):
+    if unit == "C":
+        F = value * 9 / 5 + 32
+        return F
+    elif unit == "F":
+        C = (value - 32) * 5 / 9
+        return C
+
+
+print(convert_temperature(0))
+print(convert_temperature(100))
+print(convert_temperature(32, "F"))
+print(convert_temperature(10, "K"))
+        
+
 
 # ============================================================
 # Task 27 — Find a value manually
@@ -1010,6 +1045,19 @@ print(statistics)
 # find_value([1, 2, 3], 5)          -> -1
 
 # Write your code below:
+
+def find_value(numbers, target):
+    position = 0
+    for num in numbers:
+        if num == target:
+            return position
+        position += 1
+            
+
+
+
+print(find_value([10, 20, 30, 20], 30))
+print(find_value([1, 2, 3], 5))
 
 
 # ============================================================
@@ -1037,6 +1085,16 @@ print(statistics)
 # Do NOT create a new list.
 
 # Write your code below:
+
+def remove_all(numbers, value):
+    while value in numbers:
+        numbers.remove(value)
+
+    return numbers
+
+
+numbers = [10, 20, 20, 30, 20]
+print(remove_all(numbers, 20))
 
 
 # ============================================================
@@ -1069,6 +1127,15 @@ print(statistics)
 # multiply(-2, 4) -> -8
 
 # Write your code below:
+
+def multiply(a, b):
+    if b == 0:
+       return 0
+    return a + multiply(a, b - 1)
+
+print(multiply(5, 3))
+print(multiply(10, 3))
+print(multiply(-2, 4))
 
 
 # ============================================================
