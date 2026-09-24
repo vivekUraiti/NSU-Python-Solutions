@@ -185,6 +185,20 @@ print(is_even(7))
 
 numbers = [8, 3, 10, 1, 6]
 
+ordered = sorted(numbers)
+print(ordered)
+print(numbers)
+
+# B
+
+numbers.sort()
+print(numbers)
+
+result = numbers.sort()
+print(result) # None
+
+
+
 
 
 
@@ -207,6 +221,10 @@ numbers = [8, 3, 10, 1, 6]
 # The original scores list should remain unchanged.
 
 # Write your code below:
+scores = [82, 95, 73, 88, 61]
+
+high_to_low = sorted(scores, reverse=True)
+print(high_to_low)
 
 
 # ============================================================
@@ -214,7 +232,7 @@ numbers = [8, 3, 10, 1, 6]
 # ============================================================
 # Start with:
 #
-# words = ["pear", "watermelon", "fig", "banana", "kiwi"]
+words = ["pear", "watermelon", "fig", "banana", "kiwi"]
 #
 # Create:
 #
@@ -233,19 +251,31 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+shortest_first = sorted(words, key=len)
+print(shortest_first)
+
+longest_first = sorted(words, key=len, reverse=True)
+print(longest_first)
+
+
+
+
+
 
 # ============================================================
 # Task 8 — Case-insensitive sorting
 # ============================================================
 # Start with:
 #
-# cities = [
-#     "berlin",
-#     "Algiers",
-#     "cairo",
-#     "Amsterdam",
-#     "zurich"
-# ]
+
+cities = [
+    "berlin",
+    "Algiers",
+    "cairo",
+    "Amsterdam",
+    "zurich"
+]
+
 #
 # Sort the list alphabetically without treating uppercase
 # and lowercase letters as separate groups.
@@ -262,18 +292,21 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+ordered_cities = sorted(cities, key=str.lower)
+print(ordered_cities)
+
 
 # ============================================================
 # Task 9 — Sorting tuples with lambda
 # ============================================================
 # Start with:
 #
-# students = [
-#     ("Anna", 82),
-#     ("Boris", 95),
-#     ("Mira", 88),
-#     ("Daniel", 73)
-# ]
+students = [
+    ("Anna", 82),
+    ("Boris", 95),
+    ("Mira", 88),
+    ("Daniel", 73)
+]
 #
 # Sort students by score from highest to lowest.
 #
@@ -288,13 +321,15 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+score_high_to_low = sorted(students, key=lambda x: x[1], reverse=True)
+print(score_high_to_low)
 
 # ============================================================
 # Task 10 — Filtering values
 # ============================================================
 # Start with:
 #
-# scores = [45, 70, 82, 39, 91, 60, 58]
+scores = [45, 70, 82, 39, 91, 60, 58]
 #
 # Use filter() and a lambda to keep only scores >= 60.
 #
@@ -305,13 +340,21 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+passing_scores = list(filter(
+    lambda x: x >= 60,
+    scores
+))
+
+print(passing_scores)
+
+
 
 # ============================================================
 # Task 11 — Transforming values with map()
 # ============================================================
-# Start with:
+#  Start with:
 #
-# prices = [100, 250, 80, 40]
+prices = [100, 250, 80, 40]
 #
 # Use map() and a lambda to increase every price by 10%.
 #
@@ -326,20 +369,25 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+increases_price = map(lambda x: round(x * 1.10, 2), prices)
+result = list(increases_price)
+print(result)
+#
+
 
 # ============================================================
 # Task 12 — Filter, sort, and map together
 # ============================================================
 # Start with:
 #
-# students = [
-#     {"name": "Anna", "score": 82},
-#     {"name": "Boris", "score": 55},
-#     {"name": "Mira", "score": 91},
-#     {"name": "Daniel", "score": 67},
-#     {"name": "Sara", "score": 48}
-# ]
-#
+students = [
+    {"name": "Anna", "score": 82},
+    {"name": "Boris", "score": 55},
+    {"name": "Mira", "score": 91},
+    {"name": "Daniel", "score": 67},
+    {"name": "Sara", "score": 48}
+]
+
 # Step 1:
 # Use filter() to keep students with score >= 60.
 #
@@ -358,18 +406,32 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+passing_students = list(filter(
+    lambda x: x["score"] >= 60, students
+))
+passing_students = sorted(
+    passing_students,
+    key=lambda x: x["score"],
+    reverse=True
+)
+passing_scores = list(map(
+    lambda x: x["name"], passing_students
+))
+
+print(passing_scores)
+
 
 # ============================================================
 # Task 13 — BONUS: Sort records by multiple ideas
 # ============================================================
 # Start with:
 #
-# products = [
-#     {"name": "Keyboard", "price": 70},
-#     {"name": "Mouse", "price": 25},
-#     {"name": "Monitor", "price": 220},
-#     {"name": "USB Cable", "price": 10}
-# ]
+products = [
+    {"name": "Keyboard", "price": 70},
+    {"name": "Mouse", "price": 25},
+    {"name": "Monitor", "price": 220},
+    {"name": "USB Cable", "price": 10}
+]
 #
 # Create:
 #
@@ -387,20 +449,25 @@ numbers = [8, 3, 10, 1, 6]
 
 # Write your code below:
 
+by_price = sorted(products, key=lambda x: x["price"], reverse=True)
+print(by_price)
+
+by_name_length = sorted(products, key=lambda x: x['name'])
+print(by_name_length)
 
 # ============================================================
 # Task 14 — BONUS: Student ranking pipeline
 # ============================================================
 # Start with:
 #
-# students = [
-#     ("Anna", 82),
-#     ("Boris", 55),
-#     ("Mira", 91),
-#     ("Daniel", 67),
-#     ("Sara", 48),
-#     ("Omar", 76)
-# ]
+students = [
+    ("Anna", 82),
+    ("Boris", 55),
+    ("Mira", 91),
+    ("Daniel", 67),
+    ("Sara", 48),
+    ("Omar", 76)
+]
 #
 # Build this pipeline:
 #
@@ -425,3 +492,15 @@ numbers = [8, 3, 10, 1, 6]
 # Print ranking.
 
 # Write your code below:
+
+ranking = list(filter(
+    lambda x: x[1] >= 60,
+    students,
+))
+
+ranking = sorted(ranking, key=lambda x: x[1], reverse=True)
+
+ranking = list(map(lambda x: f" {x[0]}: {x[1]}", ranking))
+print(ranking)
+
+
