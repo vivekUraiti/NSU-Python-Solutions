@@ -35,6 +35,15 @@ Use only concepts covered in Lecture 06 and earlier lectures.
 
 # Write your code below:
 
+def square(number):
+    return number ** 2
+
+operation = square
+
+print(square(5))
+print(operation(5))
+print(operation == square)
+
 
 # ============================================================
 # Task 2 — Passing a function as an argument
@@ -57,6 +66,19 @@ Use only concepts covered in Lecture 06 and earlier lectures.
 # Pass the function names WITHOUT parentheses.
 
 # Write your code below:
+
+def double(number):
+    return number * 2
+
+def triple(number):
+    return number * 3
+
+def apply(operation, value):
+    return operation(value)
+
+print(apply(double, 5))
+print(apply(triple, 5))
+
 
 
 # ============================================================
@@ -86,6 +108,19 @@ Use only concepts covered in Lecture 06 and earlier lectures.
 # Write your code below:
 
 
+def transform(values, operation):
+    result = []
+    for value in values:
+        result.append(operation(value))
+    return result
+    
+def square(number):
+    return number * number
+
+
+print(transform([1, 2, 3, 4], square))
+
+
 # ============================================================
 # Task 4 — Lambda expressions
 # ============================================================
@@ -104,6 +139,15 @@ Use only concepts covered in Lecture 06 and earlier lectures.
 # Each lambda must contain only one expression.
 
 # Write your code below:
+
+double = lambda x: x * 2
+add = lambda x, y: x + y
+is_even = lambda x: x % 2 == 0
+
+print(double(5))
+print(add(3, 4))
+print(is_even(8))
+print(is_even(7))
 
 
 # ============================================================
@@ -138,6 +182,10 @@ Use only concepts covered in Lecture 06 and earlier lectures.
 # What does list.sort() return?
 
 # Write your code below:
+
+numbers = [8, 3, 10, 1, 6]
+
+
 
 
 # ============================================================
