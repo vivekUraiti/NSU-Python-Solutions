@@ -1163,6 +1163,17 @@ print(multiply(-2, 4))
 
 # Write your code below:
 
+def fibonacci(n):
+    if n <= 1:
+        return n
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+print(fibonacci(0))
+print(fibonacci(1))
+print(fibonacci(6))
+
 
 # ============================================================
 # Task 31 — math: hypotenuse
@@ -1189,6 +1200,18 @@ print(multiply(-2, 4))
 # hypotenuse(-3, 4) -> None
 
 # Write your code below:
+
+def hypotenuse(a, b):
+    if a <= 0 or b <= 0:
+        return None
+    else:
+        c = math.sqrt(a ** 2 + b ** 2)
+        return c 
+
+
+print(hypotenuse(3, 4))
+print(hypotenuse(5, 12))
+print(hypotenuse(-3, 4))
 
 
 # ============================================================
@@ -1222,6 +1245,16 @@ print(multiply(-2, 4))
 # - a function without return returns None.
 
 # Write your code below:
+
+def add_student(students, name):
+    return students.append(name)
+
+students = ["Anna", "Alex"]
+
+result = add_student(students, "Mira")
+print(students)
+print(result)
+
 
 
 # ============================================================
@@ -1259,6 +1292,20 @@ print(multiply(-2, 4))
 
 # Write your code below:
 
+def square_print(n):
+    print(n ** 2)
+
+def square_return(n):
+    return n ** 2
+
+a = square_print(5)
+b = square_return(5)
+
+print(a)
+print(b)
+
+
+
 
 # ============================================================
 # Task 34 — Empty return
@@ -1293,6 +1340,19 @@ print(multiply(-2, 4))
 # return None
 
 # Write your code below:
+
+def check_age(age):
+    if age < 0:
+        print("Invalid age")
+        return
+    else:
+        print("Valid age")
+
+result1 = check_age(-5)
+result2 = check_age(5)
+
+print(result1)
+print(result2)
 
 
 # ============================================================
@@ -1331,6 +1391,29 @@ print(multiply(-2, 4))
 
 # Write your code below:
 
+def number_statistics(*numbers):
+    total = 0
+    smallest = numbers[0]
+    largest = numbers[0]
+    if not numbers:
+        return None
+    for num in numbers:
+        total += num
+
+        if num < smallest:
+            smallest = num
+        if num > largest:
+            largest = num
+    average = total / len(numbers)
+    return total, average, smallest, largest
+
+
+total, average, smallest, largest = number_statistics(5, 10, 2, 13)
+print(total)
+print(average)
+print(smallest)
+print(largest)
+
 
 # ============================================================
 # Task 36 — Recursive sum of list elements
@@ -1362,6 +1445,16 @@ print(multiply(-2, 4))
 
 # Write your code below:
 
+def recursive_sum(numbers):
+    if not numbers:
+        return 0
+
+    return numbers[0] + recursive_sum(numbers[1:])
+
+
+print(recursive_sum([1, 2, 3, 4]))
+print(recursive_sum([10]))
+print(recursive_sum([]))
 
 # ============================================================
 # Task 37 — Reverse a list using list methods
@@ -1392,7 +1485,14 @@ print(multiply(-2, 4))
 
 # Write your code below:
 
+def reverse_list(numbers):
+    return numbers.reverse()
 
+numbers = [1, 2, 3, 4]
+
+result = reverse_list(numbers)
+print(numbers)
+print(result)
 # ============================================================
 # Task 38 — Math: nearest integer
 # ============================================================
@@ -1426,3 +1526,10 @@ print(multiply(-2, 4))
 # with negative numbers.
 
 # Write your code below:
+
+def rounding_report(number):
+    print(math.floor(number)) # rounded down
+    print(math.ceil(number))  # rounded up
+
+print(rounding_report(4.7))
+print(rounding_report(-4.7)) # In floor it will rounded up like - 5 and In ceil it will rounded down like -4
