@@ -15,6 +15,13 @@ Run each task with your own extra test values.
 
 # Write your code below:
 
+raw = " aLice SMITH "
+
+clean = raw.strip().title()
+print(clean)
+
+# python strings are immutable until we create = it doesn't modify in the string but it gets the new string!
+
 
 # ============================================================
 # Task 2 — Extract a filename extension
@@ -23,6 +30,8 @@ Run each task with your own extra test values.
 # Then test "notes.txt". You may use split(). Assume a dot exists.
 
 # Write your code below:
+
+
 
 
 # ============================================================
@@ -34,6 +43,12 @@ Run each task with your own extra test values.
 
 # Write your code below:
 
+text =  "  Python   files  are useful  "
+
+word = text.split()
+print(word)
+
+print(' '.join(word))
 
 # ============================================================
 # Task 4 — Count a substring
@@ -44,6 +59,10 @@ Run each task with your own extra test values.
 
 # Write your code below:
 
+text = "banana bandana"
+
+print(text.startswith('ban'), text.endswith('ana'))
+print(text.count('ana'))
 
 # ============================================================
 # Task 5 — Find an optional separator
@@ -55,6 +74,8 @@ Run each task with your own extra test values.
 # Write your code below:
 
 
+
+
 # ============================================================
 # Task 6 — Normalize a simple record
 # ============================================================
@@ -62,6 +83,11 @@ Run each task with your own extra test values.
 # and print "Anna | 82 | NSU". Assume no commas occur inside a field.
 
 # Write your code below:
+
+row = "  Anna , 82 , NSU  "
+row = row.strip()
+print(" | ".join(row.split(",")))
+
 
 
 # ============================================================
@@ -73,6 +99,13 @@ Run each task with your own extra test values.
 
 # Write your code below:
 
+import re
+
+text = "Rooms B-204, C-17, A-315"
+print(re.findall(r"[0-9]+", text))
+print(text)
+
+
 
 # ============================================================
 # Task 8 — Check a student ID
@@ -82,6 +115,8 @@ Run each task with your own extra test values.
 # re.fullmatch(). Test "AB-2047", "A-2047", and "xAB-2047".
 
 # Write your code below:
+
+
 
 
 # ============================================================
