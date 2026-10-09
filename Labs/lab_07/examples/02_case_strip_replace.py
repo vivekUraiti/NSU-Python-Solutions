@@ -1,6 +1,6 @@
 """String methods return new strings."""
 
-raw = "  aLiCe SMITH  "
+raw = "  aLiCe SMITH\n"
 clean = raw.strip().title()
 print(repr(raw), repr(clean))
 sentence = "red, red, blue"

@@ -31,6 +31,15 @@ print(clean)
 
 # Write your code below:
 
+filename = "final.report.pdf"
+extension = filename.split(".")[-1]
+print(extension)
+
+filename2 = "notes.txt"
+extension2 = filename2.split(".")[-1]
+print(extension2)
+
+
 
 
 
@@ -73,6 +82,16 @@ print(text.count('ana'))
 
 # Write your code below:
 
+def split_code(value):
+
+    index = value.find("-")
+    if index == -1:
+        return value
+    else:
+        return value[:index]
+
+print(split_code("NS-205"))
+print(split_code("NS205"))
 
 
 
@@ -116,7 +135,14 @@ print(text)
 
 # Write your code below:
 
+def is_valid_id(value):
+    pattern = r"[A-Z]{2}-\d{4}"
+    return re.fullmatch(pattern, value)
 
+
+print(is_valid_id("AB-2047"))
+print(is_valid_id("A-2047"))
+print(is_valid_id("xAB-2047"))
 
 
 # ============================================================
@@ -128,6 +154,15 @@ print(text)
 
 # Write your code below:
 
+pattern = r"[0-9]+"
+text = "Room 204"
+
+print(re.search(pattern, text)) # we just have to search the pattern from text
+print(re.match(pattern, text))
+print(re.fullmatch(pattern, text))
+
+
+
 
 # ============================================================
 # Task 10 — Extract candidate dates
@@ -137,6 +172,17 @@ print(text)
 # match does not establish that a date exists.
 
 # Write your code below:
+
+pattern = r"\d{2}/\d{2}/\d{4}"
+text = "Due 28/09/2026; revised 02/10/2026; invalid 99/99/2026"
+
+print(re.findall(pattern, text))
+
+## Regex checks the text patterns not real world calender logic
+## match only cares about the first date because it is at the very beginning.
+
+
+
 
 
 # ============================================================
@@ -148,6 +194,10 @@ print(text)
 
 # Write your code below:
 
+text = "Contact ada@example.com or bob.smith@nsu.ru"
+pattern = r"[A-Za-z0-9._]+@[A-Za-z0-9._]+"
+
+print(re.findall(pattern, text))
 
 # ============================================================
 # Task 12 — Clean and select codes
@@ -157,6 +207,15 @@ print(text)
 # digit format from Task 8. Print the resulting list.
 
 # Write your code below:
+
+values = [" ns-205 ", "AB-2047", "invalid", " xy-3001 "]
+
+cleaned_values = [val.strip().upper() for val in values]
+print(cleaned_values)
+pattern = r"^A-Z{2}-/d{4}"
+
+valid_ids = [val for val in cleaned_values if re.findall(pattern, val)]
+print(valid_ids)
 
 
 # ============================================================
@@ -168,6 +227,10 @@ print(text)
 
 # Write your code below:
 
+text = "Alice met Bob in Novosibirsk"
+pattern = r"\b[A-Z]\w*"
+print(re.findall(pattern, text))
+
 
 # ============================================================
 # Task 14 — BONUS: Two code formats
@@ -178,3 +241,10 @@ print(text)
 # Write your code below:
 
 
+pattern = r"[A-Z]{2}-\d{3}\d?"
+
+test_cases = ["NS-205", "NS-2047", "N-205"]
+
+for case in test_cases:
+    match = re.fullmatch(pattern, case)
+    print(match)
