@@ -113,6 +113,20 @@ DATA = LAB_DIR / "data"
 
 # Write your code below:
 
+..
+class Book:
+    
+    def init(self, title, author):
+        self.title = title,
+        self.author = author
+        
+    def describe(self):
+       print(f"{self.title} by {self.author}")
+
+
+book1 = Book("Python Basics", "A. Ivanov")
+print(book1.describe())
+
 
 # ============================================================
 # Task 8 — A Rectangle class
@@ -125,6 +139,24 @@ DATA = LAB_DIR / "data"
 # for both objects. Do not use inheritance.
 
 # Write your code below:
+class Rectangle:
+       
+       def init(self, width, height):
+           self.width = width
+           self.height = height
+           
+       def area(self):
+           return self.width * self.height
+        
+       def perimeter(self):
+           return 2 * (self.width + self.height)
+           
+     
+rectangle = Rectangle(5, 3)
+
+print(rectangle.area())
+print(rectangle.perimeter())
+
 
 
 # ============================================================
@@ -141,6 +173,31 @@ DATA = LAB_DIR / "data"
 
 # Write your code below:
 
+class Counter:
+    def init(self, start=0):
+        self.value = start
+
+    def add(self, amount):
+        self.value += amount
+
+    def reset(self):
+        self.value = 0
+
+    def get_value(self):
+        return self.value
+
+
+c = Counter(10)
+c.add(3)
+c.add(-2)
+print(c.get_value())
+
+c.reset()
+print(c.get_value())  
+
+c2 = Counter()
+print(c2.get_value())  
+
 
 # ============================================================
 # Task 10 — Independent Student objects
@@ -155,6 +212,26 @@ DATA = LAB_DIR / "data"
 # Do not define scores as a class attribute.
 
 # Write your code below:
+
+class Student:
+    
+    def init(self, name):
+        self.name = name
+        self.scores = []
+        
+    def add_score(self, score):
+        self.scores.append(score)
+        
+        
+anna = Student("Anna")
+anna.add_score(80)
+anna.add_score(90)
+
+omar = Student("omar")
+print(anna.scores)
+print(omar.scores)
+
+
 
 
 # ============================================================
@@ -174,6 +251,28 @@ DATA = LAB_DIR / "data"
 
 # Write your code below:
 
+class ValidatedStudent:
+    def init(self, name):
+        self.name = name
+        self.scores = []
+
+    def add_score(self, score):
+        if score < 0 or score > 100:
+            raise ValueError("Score must be between 0 and 100")
+
+        self.scores.append(score)
+
+
+anna = ValidatedStudent("Anna")
+
+for score in [80, -1, 100, 101]:
+    try:
+        anna.add_score(score)
+    except ValueError:
+        print(f"Rejected: {score}")
+
+print(anna.scores)
+
 
 # ============================================================
 # Task 12 — Average and empty data
@@ -188,6 +287,35 @@ DATA = LAB_DIR / "data"
 # Do not return 0 for an empty list: 0 can be a real average.
 
 # Write your code below:
+class StudentReport:
+    
+    def init(self, name):
+        self.name = name
+        self.scores = []
+        
+    def add_score(self, score):
+        self.scores.append(score)
+       
+       
+    def average(self):
+        if len(self.scores) == 0:
+            raise ValueError("No scores recorded")
+        else:
+            return sum(self.scores) / len(self.scores)
+            
+            
+anna = StudentReport("Anna")
+anna.add_score(80)
+anna.add_score(90)
+
+print(anna.average())
+
+omar = StudentReport("Omar")
+try:
+     print(omar.average())
+except ValueError as e:
+     print(e)
+  
 
 
 # ============================================================
