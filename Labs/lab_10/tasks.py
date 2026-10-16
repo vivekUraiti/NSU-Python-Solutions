@@ -24,16 +24,27 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+
 class Student:
     university = "NSU"
+
     def __init__(self, name):
         self.name = name
+
 
 anna = Student("Anna")
 omar = Student("Omar")
 
 print(anna.name, anna.university)
 print(omar.name, omar.university)
+
+Student.university = "NSU Updated"
+
+print(anna.university)
+print(omar.university)
+
+
+
 
 # ============================================================
 # Task 2 — Shadow a class attribute
@@ -48,19 +59,26 @@ print(omar.name, omar.university)
 
 # Write your code below:
 
+
 class Device:
-    category = "Shared"
-    def __init__(self, category = "General"):
-        self.category = category
+    category = "General"
+
+    def __init__(self, name):
+        self.name = name
+
 
 a = Device("Laptop")
 b = Device("Printer")
 
 a.category = "Personal"
-b.category = "Shared"
+Device.category = "Shared"
+
 print(a.category)
 print(b.category)
 print(Device.category)
+
+
+
 
 
 # ============================================================
@@ -80,21 +98,26 @@ print(Device.category)
 
 # Write your code below:
 
+
 class Team:
     def __init__(self, name):
         self.name = name
         self.members = []
+
     def add_member(self, name):
         self.members.append(name)
 
-anna = Team("Anna")
+
+alpha = Team("Alpha")
 beta = Team("Beta")
 
-anna.add_member("Anna")
+alpha.add_member("Anna")
 
-print(anna.members)
+print(alpha.members)
 print(beta.members)
-print(anna.members is beta.members)
+print(alpha.members is beta.members)
+
+
 
 
 # ============================================================
@@ -111,21 +134,23 @@ print(anna.members is beta.members)
 
 # Write your code below:
 
-class PositiveCounter:
 
+class PositiveCounter:
     def __init__(self):
         self._value = 0
 
     def add(self, amount):
         if amount <= 0:
-            raise ValueError("Amount should be positive")
+            raise ValueError("Amount must be positive")
         self._value += amount
 
     def get_value(self):
         return self._value
 
-counter = PositiveCounter()
 
+# The leading underscore is a convention, not enforced privacy.
+
+counter = PositiveCounter()
 counter.add(3)
 counter.add(2)
 
@@ -134,8 +159,10 @@ print(counter.get_value())
 try:
     counter.add(0)
 except ValueError as error:
-    pass
+    print(error)
+
 print(counter.get_value())
+
 
 
 
@@ -152,30 +179,33 @@ print(counter.get_value())
 
 # Write your code below:
 
-class ScoreBook:
 
+class ScoreBook:
     def __init__(self):
         self._scores = []
 
     def add_score(self, score):
         if score < 0 or score > 100:
-            raise ValueError("Score must be between 0 to 100")
+            raise ValueError("Score must be between 0 and 100")
         self._scores.append(score)
 
     def get_scores(self):
         return self._scores.copy()
 
+
 book = ScoreBook()
 book.add_score(80)
+
 snapshot = book.get_scores()
 snapshot.append(100)
 
 print(snapshot)
 print(book.get_scores())
 
+another_book = ScoreBook()
+print(another_book.get_scores())
 
-book1 = ScoreBook()
-print(book1.get_scores())
+
 
 
 # ============================================================
@@ -189,6 +219,26 @@ print(book1.get_scores())
 # Do not redefine __init__ or describe inside Visitor.
 
 # Write your code below:
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return "Person: " + self.name
+
+
+class Visitor(Person):
+    pass
+
+
+visitor = Visitor("Omar")
+
+print(visitor.describe())
+print(isinstance(visitor, Visitor))
+print(isinstance(visitor, Person))
+print(issubclass(Visitor, Person))
 
 
 
@@ -205,6 +255,29 @@ print(book1.get_scores())
 # Write your code below:
 
 
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return "Person: " + self.name
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+student = StudentPerson("Anna", "AI")
+
+print(student.name)
+print(student.program)
+print(student.describe())
+
+
+
+
 # ============================================================
 # Task 8 — Override a method
 # ============================================================
@@ -218,6 +291,30 @@ print(book1.get_scores())
 
 # Write your code below:
 
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return "Person: " + self.name
+
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+
+    def describe(self):
+        return f"Teacher: {self.name}, subject: {self.subject}"
+
+
+teacher = Teacher("Mira", "Python")
+
+print(teacher.describe())
+print(Person("Omar").describe())
+
+
+
 
 # ============================================================
 # Task 9 — Extend an inherited method
@@ -230,6 +327,31 @@ print(book1.get_scores())
 # Return a string; do not print inside describe().
 
 # Write your code below:
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return "Person: " + self.name
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+class DetailedStudent(StudentPerson):
+    def describe(self):
+        return super().describe() + ", program: " + self.program
+
+
+student = DetailedStudent("Anna", "AI")
+print(student.describe())
+
+
 
 
 # ============================================================
@@ -246,6 +368,45 @@ print(book1.get_scores())
 
 # Write your code below:
 
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return f"Person: {self.name}"
+
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+
+    def describe(self):
+        return f"Teacher: {self.name}, subject: {self.subject}"
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+class DetailedStudent(StudentPerson):
+    def describe(self):
+        return super().describe() + f", program: {self.program}"
+
+
+people = [
+    Person("Omar"),
+    Teacher("Mira", "Python"),
+    DetailedStudent("Anna", "AI")
+]
+
+for person in people:
+    print(person.describe())
+
+
+
 
 # ============================================================
 # Task 11 — Duck typing with shapes
@@ -258,6 +419,36 @@ print(book1.get_scores())
 # For an empty list, print 0. Do not branch on the shape's type.
 
 # Write your code below:
+
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+
+class Square:
+    def __init__(self, side):
+        self.side = side
+
+    def area(self):
+        return self.side ** 2
+
+
+def total_area(shapes):
+    result = 0
+    for shape in shapes:
+        result += shape.area()
+    return result
+
+
+print(total_area([Rectangle(3, 4), Square(5)]))
+print(total_area([]))
+
+
 
 
 # ============================================================
@@ -276,6 +467,59 @@ print(book1.get_scores())
 # Write your code below:
 
 
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return f"Person: {self.name}"
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+class DetailedStudent(StudentPerson):
+    def describe(self):
+        return super().describe() + f", program: {self.program}"
+
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+
+    def describe(self):
+        return f"Teacher: {self.name}, subject: {self.subject}"
+
+
+class Course:
+    def __init__(self, title):
+        self.title = title
+        self.students = []
+
+    def enroll(self, person):
+        self.students.append(person)
+
+    def roster(self):
+        return [person.describe() for person in self.students]
+
+
+course = Course("Python")
+course.enroll(Teacher("Mira", "Python"))
+course.enroll(DetailedStudent("Anna", "AI"))
+
+for item in course.roster():
+    print(item)
+
+other_course = Course("Math")
+print(other_course.roster())
+
+
+
+
 # ============================================================
 # Task 13 — BONUS: a further subclass
 # ============================================================
@@ -288,6 +532,40 @@ print(book1.get_scores())
 # description without changes to Course.
 
 # Write your code below:
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return f"Person: {self.name}"
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+class DetailedStudent(StudentPerson):
+    def describe(self):
+        return super().describe() + f", program: {self.program}"
+
+
+class ResearchStudent(DetailedStudent):
+    def __init__(self, name, program, thesis):
+        super().__init__(name, program)
+        self.thesis = thesis
+
+    def describe(self):
+        return super().describe() + f", thesis: {self.thesis}"
+
+
+researcher = ResearchStudent("Anna", "AI", "XAI")
+print(researcher.describe())
+
+
 
 
 # ============================================================
@@ -304,3 +582,86 @@ print(book1.get_scores())
 # Repeated successful runs should replace roster.txt, not append duplicates.
 
 # Write your code below:
+
+
+from pathlib import Path
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def describe(self):
+        return f"Person: {self.name}"
+
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+
+    def describe(self):
+        return f"Teacher: {self.name}, subject: {self.subject}"
+
+
+class StudentPerson(Person):
+    def __init__(self, name, program):
+        super().__init__(name)
+        self.program = program
+
+
+class DetailedStudent(StudentPerson):
+    def describe(self):
+        return super().describe() + f", program: {self.program}"
+
+
+class ResearchStudent(DetailedStudent):
+    def __init__(self, name, program, thesis):
+        super().__init__(name, program)
+        self.thesis = thesis
+
+    def describe(self):
+        return super().describe() + f", thesis: {self.thesis}"
+
+
+class Course:
+    def __init__(self, title):
+        self.title = title
+        self.students = []
+
+    def enroll(self, person):
+        self.students.append(person)
+
+    def roster(self):
+        return [person.describe() for person in self.students]
+
+
+def save_roster(course, path):
+    with open(path, "w", encoding="utf-8") as file:
+        for description in course.roster():
+            file.write(description + "\n")
+
+
+OUTPUT = Path("output")
+
+course = Course("Python")
+course.enroll(Teacher("Mira", "Python"))
+course.enroll(DetailedStudent("Anna", "AI"))
+course.enroll(ResearchStudent("Anna", "AI", "XAI"))
+
+try:
+    save_roster(course, OUTPUT / "roster.txt")
+except OSError:
+    print("Cannot save roster")
+else:
+    print("Roster saved")
+
+
+try:
+    save_roster(course, OUTPUT / "missing_folder" / "roster.txt")
+except OSError:
+    print("Cannot save roster")
+else:
+    print("Roster saved")
+
+

@@ -22,6 +22,16 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+iterator = iter([10, 20, 30])
+
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
+print(next(iterator, "END"))
+
+
+
+
 
 # ========================================================================
 # Task 2 — Independent iterators
@@ -35,6 +45,21 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+names = ["Anna", "Omar", "Lena"]
+
+first = iter(names)
+second = iter(names)
+
+print(next(first))
+print(next(first))
+print(next(second))
+
+print(list(first))
+print(list(second))
+
+
+
+
 
 # ========================================================================
 # Task 3 — Exhaustion and StopIteration
@@ -46,6 +71,19 @@ Do not use NumPy or Pandas in this lab.
 # Expected output: 2, 4, Finished on separate lines.
 
 # Write your code below:
+
+
+iterator = iter([2, 4])
+
+while True:
+    try:
+        value = next(iterator)
+        print(value)
+    except StopIteration:
+        print("Finished")
+        break
+
+
 
 
 
@@ -63,6 +101,31 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+class Countdown:
+    def __init__(self, start):
+        self.current = start
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current <= 0:
+            raise StopIteration
+
+        value = self.current
+        self.current -= 1
+        return value
+
+
+countdown = Countdown(3)
+print(list(countdown))
+print(list(countdown))
+
+print(list(Countdown(0)))
+
+
+
+
 
 # ========================================================================
 # Task 5 — Even-number generator
@@ -77,6 +140,21 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+def even_numbers(limit):
+    number = 0
+
+    while number < limit:
+        yield number
+        number += 2
+
+
+print(list(even_numbers(7)))
+print(list(even_numbers(0)))
+print(sum(even_numbers(7)))
+
+
+
+
 
 # ========================================================================
 # Task 6 — Square generator
@@ -89,6 +167,18 @@ Do not use NumPy or Pandas in this lab.
 # Test with both a list and range(4).
 
 # Write your code below:
+
+
+def squares(numbers):
+    for number in numbers:
+        yield number ** 2
+
+
+print(list(squares([2, -3, 0])))
+print(list(squares([])))
+print(list(squares(range(4))))
+
+
 
 
 
@@ -106,6 +196,27 @@ Do not use NumPy or Pandas in this lab.
 
 
 
+def trace_values():
+    print("Start")
+    yield 10
+    print("Continue")
+    yield 20
+    print("End")
+
+
+generator = trace_values()
+
+print("Created")
+print(next(generator))
+print(next(generator))
+print(next(generator, "DONE"))
+
+
+
+
+
+
+
 # ========================================================================
 # Task 8 — Generator expression and reuse
 # ========================================================================
@@ -119,6 +230,20 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+scores = [45, 60, 75, 90]
+
+generator = (score for score in scores if score >= 60)
+
+print(sum(generator))
+print(list(generator))
+
+# The list is empty because sum() already consumed the generator.
+
+count = sum(1 for score in scores if score >= 60)
+print(count)
+
+
+
 
 # ========================================================================
 # Task 9 — An infinite sequence with a stopping consumer
@@ -130,6 +255,20 @@ Do not use NumPy or Pandas in this lab.
 # Do not convert this generator to a list.
 
 # Write your code below:
+
+def counting(start=1):
+    while True:
+        yield start
+        start += 1
+
+
+for number in counting(10):
+    print(number)
+
+    if number == 14:
+        break
+
+
 
 
 
@@ -147,6 +286,20 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+def read_numbers(path):
+    with open(path, "r", encoding="utf-8") as file:
+        for line in file:
+            text = line.strip()
+
+            if text:
+                yield int(text)
+
+
+print(sum(read_numbers("numbers.txt")))
+
+
+
+
 
 # ========================================================================
 # Task 11 — Logging decorator
@@ -159,6 +312,30 @@ Do not use NumPy or Pandas in this lab.
 # Check that multiply.__name__ is still "multiply".
 
 # Write your code below:
+
+
+from functools import wraps
+
+
+def announce(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print(f"Running {func.__name__}")
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+@announce
+def multiply(a, b=2):
+    return a * b
+
+
+print(multiply(3))
+print(multiply(3, b=4))
+print(multiply.__name__)
+
+
 
 
 
@@ -177,6 +354,30 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+from functools import wraps
+
+
+def around(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print("Before")
+        result = func(*args, **kwargs)
+        print("After")
+        return result
+
+    return wrapper
+
+
+@around
+def subtract(a, b):
+    return a - b
+
+
+print(subtract(10, 3))
+
+
+
+
 
 # ========================================================================
 # Task 13 — Timing a numerical calculation
@@ -190,6 +391,39 @@ Do not use NumPy or Pandas in this lab.
 # Time the consumer, rather than the creation of a generator.
 
 # Write your code below:
+
+
+from functools import wraps
+import time
+
+
+def squares(numbers):
+    for number in numbers:
+        yield number ** 2
+
+
+def timed(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+
+        try:
+            return func(*args, **kwargs)
+        finally:
+            duration = time.perf_counter() - start
+            print(f"{func.__name__}: {duration:.4f}s")
+
+    return wrapper
+
+
+@timed
+def sum_squares(n):
+    return sum(squares(range(n)))
+
+
+print(sum_squares(4))
+
+
 
 
 
@@ -209,6 +443,41 @@ Do not use NumPy or Pandas in this lab.
 # Write your code below:
 
 
+from functools import wraps
+
+
+def announce(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print(f"Running {func.__name__}")
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+def around(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print("Before")
+        result = func(*args, **kwargs)
+        print("After")
+        return result
+
+    return wrapper
+
+
+@announce
+@around
+def greet(name):
+    return f"Hello, {name}"
+
+
+print(greet("Anna"))
+
+
+
+
+
 
 # ========================================================================
 # Task 15 — BONUS: reusable iterable
@@ -221,6 +490,38 @@ Do not use NumPy or Pandas in this lab.
 # For stop <= start, the iterable must be empty.
 
 # Write your code below:
+
+
+class NumberRange:
+    def __init__(self, start, stop):
+        self.start = start
+        self.stop = stop
+
+    def generate(self):
+        current = self.start
+
+        while current < self.stop:
+            yield current
+            current += 1
+
+    def __iter__(self):
+        return self.generate()
+
+
+r = NumberRange(2, 5)
+
+print(list(r))
+print(list(r))
+
+a = iter(r)
+b = iter(r)
+
+print(next(a))
+print(next(a))
+print(next(b))
+print(list(NumberRange(5, 2)))
+
+
 
 
 
