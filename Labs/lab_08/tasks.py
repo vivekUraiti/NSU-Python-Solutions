@@ -21,6 +21,11 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+with open(DATA / "note.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+print(content)
+print("Characters:", len(content))
+
 
 # ============================================================
 # Task 2 — Read two lines
@@ -29,6 +34,12 @@ OUTPUT = LAB_DIR / "output"
 # so the newline character is visible.
 
 # Write your code below:
+
+with open(DATA / "note.txt", "r", encoding="utf-8") as f:
+    line1 = f.readline()
+    line2 = f.readline()
+print(repr(line1))
+print(repr(line2)) 
 
 
 # ============================================================
@@ -39,6 +50,10 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+with open(DATA / "names.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+print("Number of lines:", len(lines))
+print("Last name:", lines[-1].rstrip("\n"))
 
 # ============================================================
 # Task 4 — Count nonblank lines
@@ -48,6 +63,13 @@ OUTPUT = LAB_DIR / "output"
 # task.
 
 # Write your code below:
+
+count = 0
+with open(DATA / "names.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():
+            count += 1
+print("Nonblank lines:", count)
 
 
 # ============================================================
@@ -59,6 +81,14 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+count = 0
+with open(DATA / "names.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():
+            count += 1
+
+with open(OUTPUT / "name_report.txt", "w", encoding="utf-8") as f:
+    f.write(f"Names: {count}\n")
 
 # ============================================================
 # Task 6 — Append a log entry
@@ -67,6 +97,9 @@ OUTPUT = LAB_DIR / "output"
 # this task twice should create two entries. Open with a mode.
 
 # Write your code below:
+
+with open(OUTPUT / "activity.log", "a", encoding="utf-8") as f:
+    f.write("Lab 08 completed\n")
 
 
 # ============================================================
@@ -77,6 +110,12 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+try:
+    with open(OUTPUT / "first_run.txt", "x", encoding="utf-8") as f:
+        f.write("First run")
+except FileExistsError:
+    print("output/first_run.txt already exists — skipping creation.")
+
 
 # ============================================================
 # Task 8 — Handle a missing file
@@ -86,6 +125,11 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+try:
+    with open(DATA / "missing.txt", "r", encoding="utf-8") as f:
+        f.read()
+except FileNotFoundError:
+    print("Input file not found")
 
 # ============================================================
 # Task 9 — Filter names to a new file
@@ -95,6 +139,13 @@ OUTPUT = LAB_DIR / "output"
 # spaces.
 
 # Write your code below:
+
+with open(DATA / "names.txt", "r", encoding="utf-8") as infile, \
+     open(OUTPUT / "a_names.txt", "w", encoding="utf-8") as outfile:
+    for line in infile:
+        name = line.strip()
+        if name and name[0] in ("A", "a"):
+            outfile.write(name + "\n")
 
 
 # ============================================================
@@ -107,6 +158,19 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+scores = []
+with open(DATA / "scores.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():
+            scores.append(int(line.strip()))
+
+with open(OUTPUT / "average.txt", "w", encoding="utf-8") as f:
+    if scores:
+        avg = sum(scores) / len(scores)
+        f.write(f"Average: {avg:.1f}\n")
+    else:
+        f.write("Average: N/A\n")
+
 
 # ============================================================
 # Task 11 — Read a simple table
@@ -117,6 +181,13 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+with open(DATA / "students.csv", "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():
+            name, score = line.strip().split(",")
+            if int(score) >= 80:
+                print(name, int(score))
+
 
 # ============================================================
 # Task 12 — Save a word count
@@ -125,6 +196,14 @@ OUTPUT = LAB_DIR / "output"
 # with a newline to output/word_count.txt.
 
 # Write your code below:
+
+with open(DATA / "note.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+word_count = len(text.split())
+
+with open(OUTPUT / "word_count.txt", "w", encoding="utf-8") as f:
+    f.write(f"Words: {word_count}\n")
+
 
 
 # ============================================================
@@ -135,6 +214,13 @@ OUTPUT = LAB_DIR / "output"
 
 # Write your code below:
 
+with open(DATA / "names.txt", "r", encoding="utf-8") as infile, \
+     open(OUTPUT / "clean_names.txt", "w", encoding="utf-8") as outfile:
+    for line in infile:
+        name = line.strip()
+        if name:
+            outfile.write(name + "\n")
+
 
 # ============================================================
 # Task 14 — BONUS: File and regex
@@ -143,5 +229,16 @@ OUTPUT = LAB_DIR / "output"
 # digit sequences. Write them one per line to output/numbers.txt.
 
 # Write your code below:
+
+import re
+
+with open(DATA / "note.txt", "r", encoding="utf-8") as f:
+    text = f.read()
+
+numbers = re.findall(r"[0-9]+", text)
+
+with open(OUTPUT / "numbers.txt", "w", encoding="utf-8") as f:
+    for num in numbers:
+        f.write(num + "\n")
 
 
