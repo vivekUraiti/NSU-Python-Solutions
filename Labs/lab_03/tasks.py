@@ -24,7 +24,6 @@ Use only concepts covered in Lecture 03.
 
 # Write your code below:
 
-
 # ============================================================
 # Task 2 — Age category
 # ============================================================
@@ -39,17 +38,6 @@ Use only concepts covered in Lecture 03.
 # Test boundary values: 12, 13, 17, 18, 64, 65.
 
 # Write your code below:
-
-# age = int(input("Enter your age: "))
-
-# if age < 13:
-#     print("Child")
-# elif 13 <= age and age <= 17:
-#     print("Teenager")
-# elif 18 <= age and age <= 64:
-#     print("Adult")
-# else:
-#     print("Senior")
 
 
 # ============================================================
@@ -70,20 +58,6 @@ Use only concepts covered in Lecture 03.
 
 # Write your code below:
 
-# score = int(input("Enter your score: "))
-
-# if score > 0 and score <= 100:
-#     if score >= 90:
-#         print("A")
-#     elif score >= 75:
-#         print("B")
-#     elif score >= 60:
-#         print("C")
-#     else:
-#         print("Fail")
-# else:
-#     print("Invalid score")
-
 
 # ============================================================
 # Task 4 — Access decision
@@ -102,18 +76,6 @@ Use only concepts covered in Lecture 03.
 
 # Write your code below:
 
-# age = int(input("Enter your age: "))
-
-# if age >= 18:
-#     ticket = input("Do you have a ticket? (yes/no): ")
-#     if ticket.lower() == "yes":
-#         print("Access granted")
-#     else:
-#         print("Ticket required")
-# else:
-#     print("Must be 18 or older")
-
-
 
 # ============================================================
 # Task 5 — Even numbers with range()
@@ -124,10 +86,6 @@ Use only concepts covered in Lecture 03.
 # Use range(start, stop, step).
 
 # Write your code below:
-
-# for num in range(2, 30, 2):
-#     print(num)
-
 
 
 # ============================================================
@@ -143,11 +101,6 @@ Use only concepts covered in Lecture 03.
 # 1683
 
 # Write your code below:
-# total = 0
-# for num in range(3, 100, 3):
-#     total += num
-# print(total)
-    
 
 
 # ============================================================
@@ -164,24 +117,6 @@ numbers = [4, -2, 0, 7, -5, 9, 0, -1, 8]
 # Do not manually count the values.
 
 # Write your code below:
-
-# positive_count = 0
-# negative_count = 0
-# zero_count = 0
-
-# for num in numbers:
-#     if num > 0:
-#         positive_count += 1
-#     elif num < 0:
-#         negative_count += 1
-#     else:
-#         zero_count += 1
-
-# print(f"Positive count: {positive_count}")
-# print(f"Negative count: {negative_count}")
-# print(f"Zero count: {zero_count}")
-
-
 
 
 # ============================================================
@@ -201,19 +136,6 @@ numbers = [4, -2, 0, 7, -5, 9, 0, -1, 8]
 # Iterate directly over the string.
 
 # Write your code below:
-
-text = input("Enter a word or text: ")
-
-vowels_count = 0
-vowels = ["a", "e", "i", "o", "u"]
-for word in text:
-    if word.lower() in vowels:
-        vowels_count += 1
-        continue
-
-print(f"Vowels count: {vowels_count}")
-
-
 
 
 # ============================================================
@@ -236,24 +158,6 @@ scores = [85, 42, 67, 91, 58, 73, 100, 39]
 # Average: 69.38
 
 # Write your code below:
-
-passed_students_count = 0
-failed_students_count = 0
-total_score = 0
-
-for score in scores:
-    if score >= 60:
-        passed_students_count += 1
-    else:
-        failed_students_count += 1
-    total_score += score
-
-Average = total_score / len(scores)
-
-print(f"Passed: {passed_students_count}")
-print(f"Failed: {failed_students_count}")
-print(f"Average: {Average:.2f}")
-
 
 
 # ============================================================
@@ -279,17 +183,6 @@ names = ["Anna", "Boris", "Sasha", "Maria", "Oleg", "Dina"]
 
 # Write your code below:
 
-found = False
-
-your_name = input("Enter a name for search: ")
-for name in names:
-    if name == your_name:
-        found = True
-        print("Found")
-
-if not found:
-    print("Not found")
-
 
 # ============================================================
 # Task 11 — Skip invalid scores
@@ -311,24 +204,6 @@ raw_scores = [78, -5, 91, 120, 66, 0, 88, 101, 54]
 # Use continue.
 
 # Write your code below:
-
-valid_scores = []
-total_sum = 0
-
-for score in raw_scores:
-    if score > 0 or score <= 100:
-        continue
-    print(f"Processing valid score: {score}")
-    valid_scores.append(score)
-    total_sum += score
-
-if len(valid_scores) > 0:
-    Average = total_sum / len(valid_scores)
-else:
-    Average = 0
-
-print(f"Valid scores: {valid_scores}")
-print(f"Average: {Average:.2f}")
 
 
 # ============================================================
@@ -354,18 +229,6 @@ student_scores = {
 
 # Write your code below:
 
-# num_student_passed = 0
-
-# for name, score in student_scores.items():
-#     if score >= 60:
-#         print(f"{name}: Pass")
-#         num_student_passed += 1
-#     else:
-#         print(f"{name}: Fail")
-
-# print(f"Number of student passed: {num_student_passed}")
-
-
 
 # ============================================================
 # BONUS Task 13 — FizzBuzz
@@ -381,18 +244,6 @@ student_scores = {
 # Check the most specific condition first.
 
 # Write your code below:
-
-for num in range(1, 31):
-
-    if num % 15 == 0:
-        print('FizzBuzz')
-    elif num % 3 == 0:
-        print('Fizz')
-    elif num % 5 == 0:
-        print("Buzz")
-    else:
-        print(num)
-
 
 
 # ============================================================
@@ -416,16 +267,6 @@ correct_pin = "4821"
 # Do NOT use a while loop.
 
 # Write your code below:
-
-for attempt in range(3):
-    pin = input("Enter your pin: ")
-    if pin == correct_pin:
-        print("Access granted")
-        break
-    else:
-        print("Incorrect PIN")
-
-
 # ============================================================
 # EXTRA Task 15 — Largest of three numbers
 # ============================================================
@@ -448,19 +289,6 @@ for attempt in range(3):
 # Think carefully about equal values.
 
 # Write your code below:
-
-int1 = int(input("Enter first integer: "))
-int2 = int(input("Enter second integer: "))
-int3 = int(input("Enter third integer: "))
-
-largest = int1 
-largest = int2 if int2 > largest else largest
-largest = int3 if int3 > largest else largest
-
-print(f"Largest: {largest}")
-
-
-
 
 
 # ============================================================
@@ -486,22 +314,6 @@ numbers = [12, -4, 7, 0, 15, -9, 8, -2, 0, 21]
 
 # Write your code below:
 
-for num in numbers:
-    positive_count = 0
-    negative_count = 0
-    zero_count = 0
-    positive_sum = 0
-    negative_sum = 0
-
-    if num > 0:
-        positive_count += 1
-        positive_sum += num
-    elif num < 0:
-        negative_count += 1
-        negative_sum += num
-    else:
-        zero_count += 1
-
 
 # ============================================================
 # EXTRA Task 17 — Highest and lowest score
@@ -526,20 +338,6 @@ scores = [71, 85, 42, 96, 58, 83, 67, 91]
 
 # Write your code below:
 
-for score in scores:
-    highest = scores[0]
-    lowest = scores[0]
-
-    if score > highest:
-        highest = score
-    elif score < lowest:
-        lowest = score
-    else:
-        continue
-
-
-
-
 
 # ============================================================
 # EXTRA Task 18 — Temperature analysis
@@ -563,25 +361,6 @@ temperatures = [12, 18, 25, 31, 7, 22, 35, 16, 29, 4]
 # temperatures belong to each category.
 
 # Write your code below:
-
-for temp in temperatures:
-    cold_count = 0
-    mild_count = 0
-    warm_count = 0
-    hot_count = 0
-
-    if temp < 10:
-        print(f"{temp}: Cold")
-        cold_count += 1
-    elif 10 > temp <= 19:
-        print(f"{temp}: Mild")
-        mild_count += 1
-    elif 20 > temp <= 29:
-        print(f"{temp}: Warm")
-        warm_count += 1
-    else:
-        print(f"{temp}: Hot")
-        hot_count += 1
 
 
 # ============================================================
@@ -612,20 +391,6 @@ balance = 1000
 
 # Write your code below:
 
-for transaction in transactions:
-    deposits_count = 0
-    withdrawals_count = 0
-
-    if transaction > 0:
-        balance += transaction
-        deposits_count += 1
-    else:
-        balance += transaction
-        withdrawals_count += 1
-
-print(f"Final balance: {balance}")
-print(f"Deposits: {deposits_count}")
-print(f"Withdrawals: {withdrawals_count}")
 
 # ============================================================
 # EXTRA Task 20 — Find first number divisible by 7 and 11
@@ -645,14 +410,6 @@ print(f"Withdrawals: {withdrawals_count}")
 # 77
 
 # Write your code below:
-
-for num in range(1, 501):
-    if num % 7 == 0 and num % 11 == 0:
-        print(num)
-        break
-
-
-
 
 
 # ============================================================
@@ -687,17 +444,6 @@ secret_number = 37
 
 # Write your code below:
 
-for attempt in range(5):
-    guess = int(input("Guess the secret number: "))
-    if guess < secret_number:
-        print("Too low")
-    elif guess > secret_number:
-        print("Too high")
-    else:
-        print("Correct")
-        break
-
-
 
 # ============================================================
 # EXTRA Task 22 — Count increases
@@ -727,21 +473,6 @@ values = [10, 14, 13, 18, 22, 20, 25, 25, 30]
 
 # Write your code below:
 
-values = [10, 14, 13, 18, 22, 20, 25, 25, 30]
-
-increases_count = 0
-
-for i in range(1, len(values)):
-    if values[i] > values[i - 1]:
-        increases_count += 1
-
-print(f"Increases: {increases_count}")
-
-
-
-
-    
-
 
 # ============================================================
 # EXTRA Task 23 — Prime number check
@@ -768,21 +499,6 @@ print(f"Increases: {increases_count}")
 
 # Write your code below:
 
-user_input = int(input("Enter an integer greater than 1: "))
-
-is_prime = True
-
-for divisor in range(2, user_input):
-    if user_input % divisor == 0:
-        is_prime = False
-        print("Not prime")
-        break
-    else:
-        print("Prime")
-        break
-
-
-
 
 # ============================================================
 # EXTRA Task 24 — Multiplication table
@@ -808,12 +524,6 @@ for divisor in range(2, user_input):
 
 # Write your code below:
 
-for row in range(1, 6):
-    for column in range(1, 6):
-        product = row * column
-        print(product, end=" ")
-    print()
-
 # ============================================================
 # EXTRA Task 25 — Second largest value
 # ============================================================
@@ -836,15 +546,6 @@ numbers = [12, 7, 19, 3, 19, 14, 8]
 # Be careful with duplicate values.
 
 # Write your code below:
-largest = None
-second_largest = None
-for num in numbers:
-    if largest is None or num > largest:
-        second_largest = largest
-        largest = num
-    elif second_largest is None or (num > second_largest and num != largest):
-        second_largest = num  
-    print(f"Second largest: {second_largest}")  
 
 
 # ============================================================
@@ -869,20 +570,6 @@ numbers = [2, 5, 7, -1, 3, 4, 8, 9, -2, 6]
 
 # Write your code below:
 
-current_count = 0
-longest_count = 0
-
-for num in numbers:
-    if num > 0:
-        current_count += 1
-        if current_count > longest_count:
-            longest_count = current_count
-    elif num <= 0:
-        current_count = 0
-        print(f"Current count reset to 0 due to non-positive number: {num}")
-
-print(f"Longest positive sequence: {longest_count}")
-
 
 # ============================================================
 # EXTRA Task 27 — Number frequency
@@ -902,15 +589,6 @@ numbers = [4, 2, 7, 4, 8, 4, 2, 9, 4, 1]
 #   .count()
 
 # Write your code below:
-
-user_number = int(input("Enter a number to count its occurrences: "))
-occurrences_count = 0
-
-for num in numbers:
-    if num == user_number:
-        occurrences_count += 1
-
-print(f"Occurrences: {occurrences_count}")
 
 
 # ============================================================
@@ -939,24 +617,6 @@ digits = "0123456789"
 uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # Write your code below:
-
-for char in password:
-    has_digit = False
-    has_uppercase = False
-
-    if len(password) >= 8:
-        for char in password:
-            if char in digits:
-                has_digit = True
-            if char in uppercase:
-                has_uppercase = True
-
-        if has_digit and has_uppercase:
-            print("Valid password")
-        else:
-            print("Invalid password")
-    else:
-        print("Invalid password")
 
 
 # ============================================================
@@ -990,13 +650,6 @@ values = [3, 7, 4, 8, 5, 9, 2, 6, 1]
 
 # Write your code below:
 
-for i in range(1, len(values) - 1):
-    if values[i] > values[i - 1] and values[i] > values[i + 1]:
-        print(f"Local maximum: {values[i]}")
-
-
-
-
 
 # ============================================================
 # EXTRA Task 30 — Pair with target sum
@@ -1024,12 +677,6 @@ target = 10
 
 # Write your code below:
 
-for i in range(len(numbers)):
-    for j in range(i + 1, len(numbers)):
-        if numbers[i] + numbers[j] == target:
-            print(f"{numbers[i]} + {numbers[j]} = {target}")
-
-
 
 # ============================================================
 # EXTRA Task 31 — Grade distribution
@@ -1055,24 +702,6 @@ scores = [95, 82, 67, 73, 58, 91, 49, 88, 76, 100, 61]
 # Most common: B
 
 # Write your code below:
-A_count = 0
-B_count = 0
-C_count = 0
-Fail_count = 0
-for score in scores:
-    if score >= 90:
-        A_count += 1
-    elif score >= 75:
-        B_count += 1
-    elif score >= 60:
-        C_count += 1
-    else:
-        Fail_count += 1
-
-print(f"A: {A_count}")
-print(f"B: {B_count}")  
-print(f"C: {C_count}")
-print(f"Fail: {Fail_count}")
 
 
 # ============================================================
@@ -1097,16 +726,6 @@ numbers = [4, 7, 2, 4, 9, 7, 5, 2]
 
 # Write your code below:
 
-for i in range(len(numbers)):
-    is_duplicate = False
-    for j in range(i + 1, len(numbers)):
-        if numbers[i] == numbers[j]:
-            is_duplicate = True
-            break
-    if is_duplicate:
-        print(numbers[i])
-
-
 
 # ============================================================
 # EXTRA Task 33 — Closest number to target
@@ -1126,15 +745,6 @@ target = 20
 # min()
 
 # Write your code below:
-
-closest = numbers[0]
-for num in numbers:
-    if abs(num - target) < abs(closest - target):
-        closest = num
-
-print(f"Closest: {closest}")
-
-
 
 
 # ============================================================
@@ -1162,15 +772,6 @@ numbers = [5, 3, 8, 2, 3, 9, 5]
 
 # Write your code below:
 
-for i in range(len(numbers)):
-    for j in range(i + 1, len(numbers)):
-        if numbers[i] == numbers[j]:
-            print(f"First repeated: {numbers[i]}")
-            break
-    else:
-        continue
-    break
-
 
 # ============================================================
 # EXTRA Task 35 — Prime numbers from 2 to 100
@@ -1195,14 +796,6 @@ for i in range(len(numbers)):
 
 # Write your code below:
 
-for i in range(1, 101):
-    is_prime = True
-    for j in range(2, i):
-        if i % j == 0:
-            is_prime = False
-            break
-    if is_prime is True:
-        print(i)
 
 # ============================================================
 # EXTRA Task 36 — Number triangle
@@ -1219,13 +812,3 @@ for i in range(1, 101):
 # Use nested for loops.
 
 # Write your code below:
-
-for i in range(1, 6):
-    for j in range(1, i + 1):
-        print(j, end=" ")
-    print()
-
-
-
-
-

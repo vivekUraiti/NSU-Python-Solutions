@@ -36,15 +36,6 @@ Do not use lambda, sorted(), filter(), or map() in this lab.
 
 # Write your code below:
 
-def describe_student(name, age, city):
-    print(f"Name: {name}")
-    print(f"Age: {age}")
-    print(f"City: {city}")
-
-describe_student("Anna", 23, "Novosibirsk")
-describe_student(name="Anna", city="Novosibirsk", age=22)
-describe_student("Anna", age=22, city="Novosibirsk")
-
 
 # ============================================================
 # Task 2 — Default arguments
@@ -67,13 +58,6 @@ describe_student("Anna", age=22, city="Novosibirsk")
 
 # Write your code below:
 
-def shipping_cost(weight, rate=2.5):
-    return weight * rate
-
-print(shipping_cost(4))
-print(shipping_cost(4, 4.3))
-print(shipping_cost(4, rate=8.0))
-
 
 # ============================================================
 # Task 3 — Early return
@@ -90,14 +74,6 @@ print(shipping_cost(4, rate=8.0))
 # safe_divide(10, 0)  -> None
 
 # Write your code below:
-
-def safe_divide(a, b):
-    if b is 0:
-        return None
-    return a / b
-
-print(safe_divide(10, 2))
-print(safe_divide(10, 0))
 
 
 # ============================================================
@@ -121,13 +97,6 @@ print(safe_divide(10, 0))
 
 # Write your code below:
 
-def total_score(*scores):
-    return sum(scores)
-
-print(total_score(10, 20, 30))
-print(total_score(5))
-print(total_score(0))
-
 
 # ============================================================
 # Task 5 — *args: average score
@@ -144,16 +113,6 @@ print(total_score(0))
 # average_score()             -> None
 
 # Write your code below:
-
-def average_score(*scores):
-    if not scores:
-        return None
-    else:
-        return sum(scores) / len(scores)
-
-
-print(average_score(80, 90, 100))
-print(average_score())
 
 
 # ============================================================
@@ -175,12 +134,6 @@ print(average_score())
 # year: 1
 
 # Write your code below:
-
-def show_profile(**details):
-    for key, value in details.items():
-        print(f"{key}: {value}")
-
-print(show_profile(name="Anna", city="Novosibirsk", year=1))
 
 
 # ============================================================
@@ -210,12 +163,6 @@ print(show_profile(name="Anna", city="Novosibirsk", year=1))
 
 # Write your code below:
 
-def course_report(student, *scores, **options):
-    print(student)
-    print(f"Scores: {scores}")
-    print(f"Options: {options}")
-
-course_report("Mira", 80, 92, 75, rounded=True, scale=100)
 
 # ============================================================
 # Task 8 — Scope
@@ -242,14 +189,6 @@ course_report("Mira", 80, 92, 75, rounded=True, scale=100)
 # - tax exists only inside final_price().
 
 # Write your code below:
-
-TAX_RATE = 0.20
-
-def final_price(price):
-    tax = price * TAX_RATE
-    return price + tax
-
-print(final_price(100))
 
 
 # ============================================================
@@ -280,15 +219,6 @@ print(final_price(100))
 
 # Write your code below:
 
-def countdown(n):
-    if n == 0:
-        print("Go!")
-    else:
-        print(n)
-        return countdown(n - 1)
-
-countdown(3)
-
 
 # ============================================================
 # Task 10 — Recursive factorial
@@ -310,18 +240,6 @@ countdown(3)
 # factorial(-2) -> None
 
 # Write your code below:
-
-def factorial(n):
-    if n < 0:
-        return None
-    elif n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
-
-print(factorial(5))
-print(factorial(0))
-print(factorial(-2))
 
 
 # ============================================================
@@ -346,17 +264,6 @@ print(factorial(-2))
 # sum_to(0) -> 0
 
 # Write your code below:
-
-def sum_to(n):
-    if n < 0:
-        return None
-    elif n == 0:
-        return 0
-    else:
-        return n + sum_to(n - 1)
-
-print(sum_to(4))
-print(sum_to(0))
 
 
 # ============================================================
@@ -400,39 +307,6 @@ print(sum_to(0))
 
 # Write your code below:
 
-import math
-
-radius = int(input("Enter the radius of a circle: "))
-
-circumference = 2 * math.pi * radius
-area = math.pi * radius ** 2
-area_ceil = math.ceil(area)
-area_floor = math.floor(area)
-
-print(f"Circumference: {8.849}")
-print(f"Area: {area:.4f}")
-print(f"Area ceil: {area_ceil}")
-print(f"Area floor: {area_floor}")
-
-numbers = [10, 20, 20, 30]
-
-numbers.append(40)
-numbers.extend([50, 60])
-numbers.insert(1, 15)
-
-print(numbers.count(20))
-print(numbers.index(30))
-numbers.remove(20)
-
-removed = numbers.pop()
-print(numbers)
-print(removed)
-
-
-
-
-
-
 
 # ============================================================
 # Task 13 — BONUS: Recursive digit sum
@@ -460,17 +334,6 @@ print(removed)
 # Do NOT use a loop.
 
 # Write your code below:
-
-def digit_sum(n):
-    if n < 10:
-        return n
-    return (n % 10) + digit_sum(n // 10)
-
-print(digit_sum(1234))
-print(digit_sum(7))
-    
-
-
 
 
 # ============================================================
@@ -500,23 +363,6 @@ print(digit_sum(7))
 
 # Write your code below:
 
-def result_summary(name, *scores, passing=60):
-    if not scores:
-        return None
-
-    count = 0
-
-    for score in scores:
-        if score >= passing:
-            count += 1
-
-    average = sum(scores) / len(scores)
-
-    return f"{name}: average={average}, passed={count}/{len(scores)}"
-
-
-result_summary("Anna", 80, 70, 50, 120, passing=60)
-
 
 # ============================================================
 # Task 15 — Function with validation
@@ -544,16 +390,6 @@ result_summary("Anna", 80, 70, 50, 120, passing=60)
 
 # Write your code below:
 
-def calculate_discount(price, discount=10):
-    if price < 0 or discount >=100:
-        return None
-    return price - price * discount / 100
-
-print(calculate_discount(100))
-print(calculate_discount(200, 25))
-print(calculate_discount(100, 120))
-print(calculate_discount(-20, 10))
-
 
 # ============================================================
 # Task 16 — Minimum and maximum with *args
@@ -578,24 +414,6 @@ print(calculate_discount(-20, 10))
 
 # Write your code below:
 
-def score_range(*scores):
-    if not scores:
-        return None
-    smallest = scores[0]
-    largest = scores[0]
-    for score in scores:
-        if score < smallest:
-            smallest = score
-
-        if score > largest:
-            largest = score
-
-    return largest - smallest
-
-print(score_range(10, 30, 20, 50))
-print(score_range(5))
-print(score_range())
-
 
 # ============================================================
 # Task 17 — Count values above a limit
@@ -614,18 +432,6 @@ print(score_range())
 # Use a loop.
 
 # Write your code below:
-
-def count_above(limit, *numbers):
-    count = 0
-    for num in numbers:
-        if num > limit:
-            count += 1
-    return count
-
-print(count_above(10, 5, 12, 30, 7, 20))
-count_above(100, 10, 20, 30)     
-count_above(5) 
-
 
 
 # ============================================================
@@ -657,15 +463,6 @@ count_above(5)
 
 # Write your code below:
 
-def show_settings(**settings):
-    if not settings:
-        return f"No settings"
-    for key, value in settings.items():
-        print(f"{key} = {value}")
-        
-
-print(show_settings(language="Python", version=3.12, debug=True))
-
 
 # ============================================================
 # Task 19 — math: distance between two points
@@ -688,13 +485,6 @@ print(show_settings(language="Python", version=3.12, debug=True))
 # Import math.
 
 # Write your code below:
-
-def distance(x1, y1, x2, y2):
-    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
-
-    return distance
-
-print(distance(0, 0, 3, 4))
 
 
 # ============================================================
@@ -720,20 +510,6 @@ print(distance(0, 0, 3, 4))
 # ["bread", "coffee", "eggs", "rice", "tea"]
 
 # Write your code below:
-shopping = ["bread", "milk", "eggs"]
-shopping.append("Rice")
-
-shopping.insert(1, "Coffee")
-shopping.extend(["tea", "sugar"])
-
-shopping.remove("milk")
-print(shopping.index('eggs'))
-
-print(shopping.count("bread"))
-removed_item = shopping.pop()
-print(shopping)
-print(removed_item)
-
 
 
 # ============================================================
@@ -762,17 +538,6 @@ print(removed_item)
 # Do NOT use a loop.
 
 # Write your code below:
-
-def power(base, exponent):
-    if exponent == 0:
-        return 1
-    else:
-        base_exponent = base * power(base, exponent - 1)
-        return base_exponent
-
-print(power(2, 5))
-print(power(3, 3))
-print(power(10, 0))
 
 
 # ============================================================
@@ -804,17 +569,6 @@ print(power(10, 0))
 # Do NOT use a loop.
 
 # Write your code below:
-def counts_digits(n):
-    if n < 10:
-        return 1
-    
-
-    return 1 + counts_digits(n // 10)
-
-print(counts_digits(7))
-print(counts_digits(1234))
-print(counts_digits(10000))
-    
 
 
 # ============================================================
@@ -847,16 +601,6 @@ print(counts_digits(10000))
 # - while
 
 # Write your code below:
-
-def recursive_sum(numbers):
-    if not numbers:
-        return 0
-    
-    return numbers[0] + recursive_sum(numbers[1:])
-
-print(recursive_sum([10, 20, 30]))
-print(recursive_sum([5]))
-print(recursive_sum([]))
 
 
 # ============================================================
@@ -904,39 +648,6 @@ print(recursive_sum([]))
 #  passed=3, failed=1"
 
 # Write your code below:
-
-def exam_statistics(student, *scores, passing=60):
-    highest_score = 0
-    lowest_score = 0
-    passed = 0
-    fail = 0
-    if not scores:
-        return None
-    average_score = sum(scores) / len(scores)
-    for score in scores:
-        if score > highest_score:
-            highest_score = score
-        if score < highest_score:
-            lowest_score = score
-        if score >= passing:
-            passed += 1
-        else:
-            fail += 1
-
-    print(f"{student}: Average={average_score}, highest={highest_score}, lowest={lowest_score}, passed={passed}, failed={fail}")
-
-
-
-statistics = exam_statistics(
-    "Anna",
-    80, 70, 50, 90,
-    passing=60
-)
-
-print(statistics)
-
-
-# Write your code below:
 # ============================================================
 # Task 25 — Function with multiple return values
 # ============================================================
@@ -959,26 +670,6 @@ print(statistics)
 # Assume the list is not empty.
 
 # Write your code below:
-
-
-def min_max(numbers):
-    smallest = numbers[0]
-    largest = numbers[0]
-
-    for num in numbers:
-        if num < smallest:
-            smallest = num
-
-        if num > largest:
-            largest = num
-
-    return smallest, largest
-
-
-smallest, largest = min_max([5, 2, 9, 1, 7])
-
-print(smallest)
-print(largest)
 
 
 # ============================================================
@@ -1010,21 +701,6 @@ print(largest)
 
 # Write your code below:
 
-def convert_temperature(value, unit="C"):
-    if unit == "C":
-        F = value * 9 / 5 + 32
-        return F
-    elif unit == "F":
-        C = (value - 32) * 5 / 9
-        return C
-
-
-print(convert_temperature(0))
-print(convert_temperature(100))
-print(convert_temperature(32, "F"))
-print(convert_temperature(10, "K"))
-        
-
 
 # ============================================================
 # Task 27 — Find a value manually
@@ -1045,19 +721,6 @@ print(convert_temperature(10, "K"))
 # find_value([1, 2, 3], 5)          -> -1
 
 # Write your code below:
-
-def find_value(numbers, target):
-    position = 0
-    for num in numbers:
-        if num == target:
-            return position
-        position += 1
-            
-
-
-
-print(find_value([10, 20, 30, 20], 30))
-print(find_value([1, 2, 3], 5))
 
 
 # ============================================================
@@ -1085,16 +748,6 @@ print(find_value([1, 2, 3], 5))
 # Do NOT create a new list.
 
 # Write your code below:
-
-def remove_all(numbers, value):
-    while value in numbers:
-        numbers.remove(value)
-
-    return numbers
-
-
-numbers = [10, 20, 20, 30, 20]
-print(remove_all(numbers, 20))
 
 
 # ============================================================
@@ -1128,15 +781,6 @@ print(remove_all(numbers, 20))
 
 # Write your code below:
 
-def multiply(a, b):
-    if b == 0:
-       return 0
-    return a + multiply(a, b - 1)
-
-print(multiply(5, 3))
-print(multiply(10, 3))
-print(multiply(-2, 4))
-
 
 # ============================================================
 # Task 30 — Recursive Fibonacci
@@ -1162,17 +806,6 @@ print(multiply(-2, 4))
 # Do NOT use loops inside the function.
 
 # Write your code below:
-
-def fibonacci(n):
-    if n <= 1:
-        return n
-
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-
-print(fibonacci(0))
-print(fibonacci(1))
-print(fibonacci(6))
 
 
 # ============================================================
@@ -1200,18 +833,6 @@ print(fibonacci(6))
 # hypotenuse(-3, 4) -> None
 
 # Write your code below:
-
-def hypotenuse(a, b):
-    if a <= 0 or b <= 0:
-        return None
-    else:
-        c = math.sqrt(a ** 2 + b ** 2)
-        return c 
-
-
-print(hypotenuse(3, 4))
-print(hypotenuse(5, 12))
-print(hypotenuse(-3, 4))
 
 
 # ============================================================
@@ -1245,16 +866,6 @@ print(hypotenuse(-3, 4))
 # - a function without return returns None.
 
 # Write your code below:
-
-def add_student(students, name):
-    return students.append(name)
-
-students = ["Anna", "Alex"]
-
-result = add_student(students, "Mira")
-print(students)
-print(result)
-
 
 
 # ============================================================
@@ -1292,20 +903,6 @@ print(result)
 
 # Write your code below:
 
-def square_print(n):
-    print(n ** 2)
-
-def square_return(n):
-    return n ** 2
-
-a = square_print(5)
-b = square_return(5)
-
-print(a)
-print(b)
-
-
-
 
 # ============================================================
 # Task 34 — Empty return
@@ -1340,19 +937,6 @@ print(b)
 # return None
 
 # Write your code below:
-
-def check_age(age):
-    if age < 0:
-        print("Invalid age")
-        return
-    else:
-        print("Valid age")
-
-result1 = check_age(-5)
-result2 = check_age(5)
-
-print(result1)
-print(result2)
 
 
 # ============================================================
@@ -1391,29 +975,6 @@ print(result2)
 
 # Write your code below:
 
-def number_statistics(*numbers):
-    total = 0
-    smallest = numbers[0]
-    largest = numbers[0]
-    if not numbers:
-        return None
-    for num in numbers:
-        total += num
-
-        if num < smallest:
-            smallest = num
-        if num > largest:
-            largest = num
-    average = total / len(numbers)
-    return total, average, smallest, largest
-
-
-total, average, smallest, largest = number_statistics(5, 10, 2, 13)
-print(total)
-print(average)
-print(smallest)
-print(largest)
-
 
 # ============================================================
 # Task 36 — Recursive sum of list elements
@@ -1445,16 +1006,6 @@ print(largest)
 
 # Write your code below:
 
-def recursive_sum(numbers):
-    if not numbers:
-        return 0
-
-    return numbers[0] + recursive_sum(numbers[1:])
-
-
-print(recursive_sum([1, 2, 3, 4]))
-print(recursive_sum([10]))
-print(recursive_sum([]))
 
 # ============================================================
 # Task 37 — Reverse a list using list methods
@@ -1485,14 +1036,7 @@ print(recursive_sum([]))
 
 # Write your code below:
 
-def reverse_list(numbers):
-    return numbers.reverse()
 
-numbers = [1, 2, 3, 4]
-
-result = reverse_list(numbers)
-print(numbers)
-print(result)
 # ============================================================
 # Task 38 — Math: nearest integer
 # ============================================================
@@ -1526,10 +1070,3 @@ print(result)
 # with negative numbers.
 
 # Write your code below:
-
-def rounding_report(number):
-    print(math.floor(number)) # rounded down
-    print(math.ceil(number))  # rounded up
-
-print(rounding_report(4.7))
-print(rounding_report(-4.7)) # In floor it will rounded up like - 5 and In ceil it will rounded down like -4
